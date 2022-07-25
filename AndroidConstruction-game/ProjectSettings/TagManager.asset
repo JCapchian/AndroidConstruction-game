@@ -12,6 +12,7 @@ TagManager:
   - Ammo
   - Component
   - Keys
+  - Enemy
   layers:
   - Default
   - TransparentFX

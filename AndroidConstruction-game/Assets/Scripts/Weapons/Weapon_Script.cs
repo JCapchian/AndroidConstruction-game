@@ -35,15 +35,22 @@ public class Weapon_Script : MonoBehaviour
     public float maxChargeTime;
     [SerializeField]
     private float chargeTime;
+    public float maxAmmoPerTime;
+    [SerializeField]
+    private float ammoPerTime;
+
+    public float maxDamagePerTime;
+    [SerializeField]
+    private float damagePerTime;
+
 
     [Header ("Propiedades Laser")]
     public LineRenderer ref_LineRenderer;
     Transform ref_TransformGun;
     [SerializeField]
     private bool charged = false;
-    public float maxAmmoPerTime;
-    [SerializeField]
-    private float ammoPerTime = 0.1f;
+    public EnemyStatsController targetedEnemy;
+    
 
     
     //[Header("Estadisticas Shotgun")]
@@ -64,6 +71,7 @@ public class Weapon_Script : MonoBehaviour
         // Laser Things
         chargeTime = maxChargeTime;
         ammoPerTime = maxAmmoPerTime;
+        damagePerTime = maxDamagePerTime;
     }
 
     // Start is called before the first frame update
@@ -98,19 +106,16 @@ public class Weapon_Script : MonoBehaviour
     private void LaserFunction()
     {
         if(Input.GetKey(KeyCode.Mouse0))
-        {
-            
             ShootLaser();
-        }
         else
         {
+            targetedEnemy = null;
             ref_LineRenderer.enabled = false;
             charged = false;
 
             // Charge the chargeTime
             if(charged == false && chargeTime < maxChargeTime)
-                chargeTime = maxChargeTime;
-            
+                chargeTime = maxChargeTime;   
         }
     }
 
@@ -132,12 +137,31 @@ public class Weapon_Script : MonoBehaviour
                 RaycastHit2D _hit = Physics2D.Raycast(cannon.position, transform.right);
                 Draw2DRay(cannon.position, _hit.point);
                 ConsumeAmmoLaser();
+
+                //When the laser target a enemy
+                Debug.Log(_hit.collider.gameObject.name);
+                if(_hit.collider.gameObject.tag == "Enemy")
+                {
+                    targetedEnemy = _hit.collider.gameObject.GetComponent<EnemyStatsController>();
+                    Debug.Log("Impactando a: " + targetedEnemy);
+                    
+                    if(damagePerTime > 0)
+                        damagePerTime -= Time.deltaTime;
+                    else
+                    {
+                        targetedEnemy.TakeDamage(damage);
+                        Debug.Log(targetedEnemy.name + "sufrio= " + damage + " de daño");
+                        damagePerTime = maxDamagePerTime;
+                    }
+                }
             }
             else
             {
-                //Use the default distance variable to draw the laser
+                //Use the default distance variable to draw the laser using the 'distanceRay'
                 Draw2DRay(cannon.position, cannon.transform.right * distanceRay); 
+                Debug.Log("El laser no esta impactando con nada");
             }
+            
         }
     }
 
@@ -152,12 +176,15 @@ public class Weapon_Script : MonoBehaviour
     {
         if(ammoPerTime > 0)
         {
-            ammoPerTime -= Time.deltaTime;
-            currentAmmo -= 1;
-            hubRef.AmmoUpdate();
+            ammoPerTime -= Time.deltaTime;   
         }
         else
+        {
+            currentAmmo -= 1;
+            hubRef.AmmoUpdate();
             ammoPerTime = maxAmmoPerTime;
+        }
+            
     }
     #endregion
 

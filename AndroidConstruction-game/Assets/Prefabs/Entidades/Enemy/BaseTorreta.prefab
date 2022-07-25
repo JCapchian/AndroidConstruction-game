@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1805937394}
   m_Layer: 0
   m_Name: BaseTorreta
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -167,6 +167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   proyectilePrefab: {fileID: 8972060001789191498, guid: 8743415eac448fb4c9e609df158152fc, type: 3}
   cannon: {fileID: 5042934836794997783}
+  audioRef: {fileID: 0}
 --- !u!1 &5042934836794997782
 GameObject:
   m_ObjectHideFlags: 0

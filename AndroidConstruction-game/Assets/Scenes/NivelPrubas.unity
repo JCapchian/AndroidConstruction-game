@@ -3736,7 +3736,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curretAmmo: {fileID: 969720265}
   invAmmo: {fileID: 1051577638}
-  weaponIcon: {fileID: 382869840}
   invPlayer: {fileID: 1551797202}
 --- !u!1 &760908782
 GameObject:
@@ -7153,6 +7152,63 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1001 &1512060946
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4636377920275718833, guid: 2dff497242867b941895f9a072d549a9, type: 3}
+      propertyPath: m_RootOrder
+      value: 63
+      objectReference: {fileID: 0}
+    - target: {fileID: 4636377920275718833, guid: 2dff497242867b941895f9a072d549a9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -24.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 4636377920275718833, guid: 2dff497242867b941895f9a072d549a9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4636377920275718833, guid: 2dff497242867b941895f9a072d549a9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4636377920275718833, guid: 2dff497242867b941895f9a072d549a9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4636377920275718833, guid: 2dff497242867b941895f9a072d549a9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4636377920275718833, guid: 2dff497242867b941895f9a072d549a9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4636377920275718833, guid: 2dff497242867b941895f9a072d549a9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4636377920275718833, guid: 2dff497242867b941895f9a072d549a9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4636377920275718833, guid: 2dff497242867b941895f9a072d549a9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4636377920275718833, guid: 2dff497242867b941895f9a072d549a9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4844936601315338902, guid: 2dff497242867b941895f9a072d549a9, type: 3}
+      propertyPath: m_Name
+      value: MeeleEnemy (12)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2dff497242867b941895f9a072d549a9, type: 3}
 --- !u!1 &1551797198 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7721060982835076004, guid: 8cafcab70ba03244b9daee5b8b320684, type: 3}
@@ -35069,12 +35125,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1727302265}
     - target: {fileID: 8549301282839560147, guid: e9d64072298e9a74b80d752d26cf6faa, type: 3}
+      propertyPath: damage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8549301282839560147, guid: e9d64072298e9a74b80d752d26cf6faa, type: 3}
       propertyPath: maxAmmo
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8549301282839560147, guid: e9d64072298e9a74b80d752d26cf6faa, type: 3}
       propertyPath: ammoType
       value: Purple
+      objectReference: {fileID: 0}
+    - target: {fileID: 8549301282839560147, guid: e9d64072298e9a74b80d752d26cf6faa, type: 3}
+      propertyPath: reloadTime
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8549301282839560147, guid: e9d64072298e9a74b80d752d26cf6faa, type: 3}
       propertyPath: weaponType
@@ -35091,6 +35155,10 @@ PrefabInstance:
     - target: {fileID: 8549301282839560147, guid: e9d64072298e9a74b80d752d26cf6faa, type: 3}
       propertyPath: maxAmmoPerTime
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8549301282839560147, guid: e9d64072298e9a74b80d752d26cf6faa, type: 3}
+      propertyPath: maxDamagePerTime
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8549301282839560147, guid: e9d64072298e9a74b80d752d26cf6faa, type: 3}
       propertyPath: ref_LineRenderer

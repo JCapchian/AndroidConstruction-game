@@ -13,8 +13,8 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void Awake() {
-
+    private void Awake() 
+    {
         Destroy(gameObject, 3f);
     }
 

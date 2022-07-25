@@ -7,6 +7,7 @@ public class EnemyStatsController : MonoBehaviour
     public RunInfo contadorRun;
 
     public int vidaMaxima = 100;
+    [SerializeField]
     private int vida;
     public GameObject[] lootPrefab;
     private int damageDone;
@@ -27,6 +28,7 @@ public class EnemyStatsController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other) 
     {
+        Debug.Log("Toco");
         if(other.gameObject.tag == "Proyectile")
         {
             damageDone = other.gameObject.GetComponent<Bullet>().damageBullet;
@@ -37,7 +39,7 @@ public class EnemyStatsController : MonoBehaviour
         }
     }
 
-    private void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         vida -= damage;
         Debug.Log("Le has quitado " + damage + " puntos de vida");

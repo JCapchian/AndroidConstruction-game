@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.UIElements;
 using TMPro;
 
 public class WeaponHUB : MonoBehaviour
@@ -14,7 +14,7 @@ public class WeaponHUB : MonoBehaviour
     
     public void UpdateIcon(Sprite Weapon)
     {
-        weaponIcon.sprite = Weapon;
+        //weaponIcon.sprite = Weapon;
     }
 
     public void ColorSet()
