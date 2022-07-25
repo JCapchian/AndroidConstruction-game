@@ -35081,8 +35081,16 @@ PrefabInstance:
       value: Laser
       objectReference: {fileID: 0}
     - target: {fileID: 8549301282839560147, guid: e9d64072298e9a74b80d752d26cf6faa, type: 3}
+      propertyPath: ammoPerTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8549301282839560147, guid: e9d64072298e9a74b80d752d26cf6faa, type: 3}
       propertyPath: maxChargeTime
-      value: 4
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8549301282839560147, guid: e9d64072298e9a74b80d752d26cf6faa, type: 3}
+      propertyPath: maxAmmoPerTime
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8549301282839560147, guid: e9d64072298e9a74b80d752d26cf6faa, type: 3}
       propertyPath: ref_LineRenderer

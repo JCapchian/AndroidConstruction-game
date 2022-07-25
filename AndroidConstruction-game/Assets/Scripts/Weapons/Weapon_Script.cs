@@ -41,7 +41,10 @@ public class Weapon_Script : MonoBehaviour
     Transform ref_TransformGun;
     [SerializeField]
     private bool charged = false;
+    public float maxAmmoPerTime;
+    [SerializeField]
     private float ammoPerTime = 0.1f;
+
     
     //[Header("Estadisticas Shotgun")]
     
@@ -60,6 +63,7 @@ public class Weapon_Script : MonoBehaviour
 
         // Laser Things
         chargeTime = maxChargeTime;
+        ammoPerTime = maxAmmoPerTime;
     }
 
     // Start is called before the first frame update
@@ -95,7 +99,7 @@ public class Weapon_Script : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.Mouse0))
         {
-            ref_LineRenderer.enabled = true;
+            
             ShootLaser();
         }
         else
@@ -105,44 +109,36 @@ public class Weapon_Script : MonoBehaviour
 
             // Charge the chargeTime
             if(charged == false && chargeTime < maxChargeTime)
-                chargeTime += Time.deltaTime;
+                chargeTime = maxChargeTime;
             
         }
     }
 
     private void ShootLaser()
-        {
+    {
         //Starts the timer to charge it
         if(chargeTime > 0)
             chargeTime -= Time.deltaTime;
         else
             charged = true;
 
-        if(charged)
+        if(charged == true)
         {
+            ref_LineRenderer.enabled = true;
             //"Physics2D.Raycast" cheks if the rate hash got somthing
             if (Physics2D.Raycast(ref_TransformGun.position, transform.right))
             {
                 //Take the position of the canon and draw a laser
                 RaycastHit2D _hit = Physics2D.Raycast(cannon.position, transform.right);
                 Draw2DRay(cannon.position, _hit.point);
+                ConsumeAmmoLaser();
             }
             else
             {
                 //Use the default distance variable to draw the laser
                 Draw2DRay(cannon.position, cannon.transform.right * distanceRay); 
             }
-
-            if(ammoPerTime > 0)
-            {
-                ammoPerTime -= Time.deltaTime;
-                currentAmmo -= 1;
-            }
-            else
-                ammoPerTime = 0.1f;
         }
-
-
     }
 
     //This function does is setting the position of the two point in the line renderer
@@ -150,6 +146,18 @@ public class Weapon_Script : MonoBehaviour
     {
         ref_LineRenderer.SetPosition(0, startPos);
         ref_LineRenderer.SetPosition(1, endPos);
+    }
+
+    void ConsumeAmmoLaser()
+    {
+        if(ammoPerTime > 0)
+        {
+            ammoPerTime -= Time.deltaTime;
+            currentAmmo -= 1;
+            hubRef.AmmoUpdate();
+        }
+        else
+            ammoPerTime = maxAmmoPerTime;
     }
     #endregion
 
