@@ -51,10 +51,9 @@ public class Weapon_Script : MonoBehaviour
     private bool charged = false;
     public EnemyStatsController targetedEnemy;
     
-
-    
-    //[Header("Estadisticas Shotgun")]
-    
+    [Header("Estadisticas Shotgun")]
+    public int amountOfBullets;
+    public float spread;
 
     private void Awake() {
         //Scripts Things
@@ -86,26 +85,45 @@ public class Weapon_Script : MonoBehaviour
     void Update()
     {   
         // Checks the weapontype
-        switch (weaponType)
+        if(currentAmmo > 0)
         {
-            case "Laser":
-                LaserFunction();
-                break;
-            case "Shotgun":
-                ShotgunFunction();
-                break;
-            case "Rifle":
-                RifleFunction();
-                break;
-            default:
-                break;
+            switch (weaponType)
+            {
+                case "Laser":
+                    LaserFunction();
+                    break;
+                case "Shotgun":
+                    ShotgunFunction();
+                    break;
+                case "Rifle":
+                    RifleFunction();
+                    break;
+                default:
+                    break;
+            }
         }
+
+        if(Input.GetButtonDown("Reload"))
+        {
+            if(currentAmmo < maxAmmo)
+            {
+                reloadAmmo = maxAmmo - currentAmmo;
+
+                if(inv.GetAmmo(ammoType) >= reloadAmmo)
+                    StartCoroutine(ReloadWeapon());
+                else
+                    Debug.Log("No municion en el inventario");
+            }
+            else
+                Debug.Log("Aun hay municion en el cargador");
+        }
+        
     }
 
     #region Laser_Weapon
     private void LaserFunction()
     {
-        if(Input.GetKey(KeyCode.Mouse0))
+        if(Input.GetKey(KeyCode.Mouse0) && reloading == false)
             ShootLaser();
         else
         {
@@ -159,9 +177,9 @@ public class Weapon_Script : MonoBehaviour
             {
                 //Use the default distance variable to draw the laser using the 'distanceRay'
                 Draw2DRay(cannon.position, cannon.transform.right * distanceRay); 
+                targetedEnemy = null;
                 Debug.Log("El laser no esta impactando con nada");
             }
-            
         }
     }
 
@@ -175,9 +193,7 @@ public class Weapon_Script : MonoBehaviour
     void ConsumeAmmoLaser()
     {
         if(ammoPerTime > 0)
-        {
             ammoPerTime -= Time.deltaTime;   
-        }
         else
         {
             currentAmmo -= 1;
@@ -191,7 +207,30 @@ public class Weapon_Script : MonoBehaviour
     #region  Shotgun_Weapon
     private void ShotgunFunction()
     {
+        if(Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            FireShotGun();
+        }
+    }
 
+    void FireShotGun()
+    {
+        for (var i = 0; i < amountOfBullets; i++)
+        {
+            GameObject bullet = Instantiate(proyectilePrefab, cannon.position , cannon.rotation);
+            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+            
+            Vector2 dir = transform.rotation * Vector2.right;
+            Vector2 pdir = Vector2.Perpendicular(dir) * Random.Range(-spread, spread);
+            rb.velocity = (dir + pdir) * speed;
+    
+            sound.Play("Disparo1");
+            fireEffect.Play();
+            
+        }
+
+        currentAmmo -= 1;
+        hubRef.AmmoUpdate();
     }
     #endregion
 
@@ -199,47 +238,29 @@ public class Weapon_Script : MonoBehaviour
 
     private void RifleFunction()
     {
-        if(currentAmmo > 0)
+        if(semi)
         {
-            if(semi)
-            {
-                if(Input.GetKeyDown(KeyCode.Mouse0))
-                    FireWeapon();
+            if(Input.GetKeyDown(KeyCode.Mouse0) && reloading == false)
+                FireWeapon();
 
-                    currentAmmo -= 1;
-                    hubRef.AmmoUpdate();
-            }
-            else
-            {
-                if(BPM > 0)
-                    BPM -= Time.deltaTime;    
-                else
-                {
-                    if(Input.GetKey(KeyCode.Mouse0))
-                    {
-                        FireWeapon();
-                        currentAmmo -= 1;
-
-                        hubRef.AmmoUpdate();
-                        BPM = totalBPM;
-                    }
-                }   
-            }
+            currentAmmo -= 1;
+            hubRef.AmmoUpdate();
         }
-
-        if(Input.GetButtonDown("Reload"))
+        else
         {
-            if(currentAmmo < maxAmmo)
-            {
-                reloadAmmo = maxAmmo - currentAmmo;
-
-                if(inv.GetAmmo(ammoType) >= reloadAmmo)
-                    StartCoroutine(ReloadWeapon());
-                else
-                    Debug.Log("No municion en el comunismo");
-            }
+            if(BPM > 0)
+                BPM -= Time.deltaTime;    
             else
-                Debug.Log("Aun hay municion en el cargador");
+            {
+                if(Input.GetKey(KeyCode.Mouse0) && reloading == false)
+                {
+                    FireWeapon();
+                    currentAmmo -= 1;
+
+                    hubRef.AmmoUpdate();
+                    BPM = totalBPM;
+                }
+            }   
         }
     }
 
@@ -255,8 +276,6 @@ public class Weapon_Script : MonoBehaviour
     }
 
     #endregion
-
-    
 
     public IEnumerator ReloadWeapon()
     {
@@ -277,5 +296,4 @@ public class Weapon_Script : MonoBehaviour
         sound.Play("Reload");
         Debug.Log("Recargado");
     }
-
 }
