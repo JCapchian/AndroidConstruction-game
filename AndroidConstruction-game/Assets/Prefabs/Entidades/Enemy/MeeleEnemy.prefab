@@ -139,7 +139,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
   m_Color: {r: 0.7735849, g: 0.26704252, b: 0, a: 1}
   m_FlipX: 0
@@ -179,6 +179,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   contadorRun: {fileID: 0}
   vidaMaxima: 100
+  vida: 0
   lootPrefab:
   - {fileID: 6357578757306896288, guid: 650b8f75ea8428243b918707cf328f56, type: 3}
   - {fileID: 2294583589588166039, guid: e8b2e79ac2a950146b4798af18406776, type: 3}

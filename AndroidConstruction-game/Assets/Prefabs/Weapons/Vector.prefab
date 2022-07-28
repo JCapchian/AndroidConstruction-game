@@ -133,8 +133,10 @@ MonoBehaviour:
   proyectilePrefab: {fileID: 8972060001789191498, guid: 4931380d53b074f42b44dfa89bc05342, type: 3}
   cannon: {fileID: 5507629586079867277}
   inv: {fileID: 0}
-  audio: {fileID: 0}
-  ammoType: Grey
+  sound: {fileID: 0}
+  hubRef: {fileID: 0}
+  weaponType: 
+  ammoType: Green
   semi: 0
   BPM: 0.025
   fireEffect: {fileID: 6820057312885559307}
@@ -142,7 +144,20 @@ MonoBehaviour:
   maxAmmo: 40
   currentAmmo: 40
   reloadTime: 0
+  reloading: 0
   damage: 10
+  distanceRay: 100
+  maxChargeTime: 0
+  chargeTime: 0
+  maxAmmoPerTime: 0
+  ammoPerTime: 0
+  maxDamagePerTime: 0
+  damagePerTime: 0
+  ref_LineRenderer: {fileID: 0}
+  charged: 0
+  targetedEnemy: {fileID: 0}
+  amountOfBullets: 0
+  spread: 0
 --- !u!114 &6820057311782587616
 MonoBehaviour:
   m_ObjectHideFlags: 0
