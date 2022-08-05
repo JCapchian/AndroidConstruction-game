@@ -9,13 +9,17 @@ public class PickUp_Weapon : MonoBehaviour
     public Inventory WeaponInventory;
     //Referencia al container del arma del jugador
     public GameObject weaponContainer;
+    public GameObject imageKey;
 
     public bool entro = false;
 
     private void OnTriggerEnter2D(Collider2D other) {
-        //Debug.Log("Entro");
         if(other.gameObject.tag == "Player")
         {
+            //Debug.Log("Entro");
+
+            imageKey.SetActive(true);
+
             entro = true;
             Debug.Log(entro);
             
@@ -33,7 +37,8 @@ public class PickUp_Weapon : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other) 
     {
         entro = false;
-        Debug.Log(entro);
+        imageKey.SetActive(false);
+        //Debug.Log(entro);
     }
     /*
     private void OnTriggerStay2D(Collider2D other) 

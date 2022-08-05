@@ -14,12 +14,15 @@ public class Weapon_Script : MonoBehaviour
     private AudioManager sound;
     [SerializeField]
     private WeaponHUB hubRef;
+    public string audioName;
+
 
     [Header("Estadisticas Generales")]
     public string weaponType;
     public string ammoType;
     public bool semi;
     public float BPM;
+    public bool infiniteAmmo;
     private float totalBPM;
     public ParticleSystem fireEffect;
     public float speed = 20f;
@@ -192,14 +195,18 @@ public class Weapon_Script : MonoBehaviour
 
     void ConsumeAmmoLaser()
     {
-        if(ammoPerTime > 0)
-            ammoPerTime -= Time.deltaTime;   
-        else
+        if(infiniteAmmo == false)
         {
-            currentAmmo -= 1;
-            hubRef.AmmoUpdate();
-            ammoPerTime = maxAmmoPerTime;
+            if(ammoPerTime > 0)
+                ammoPerTime -= Time.deltaTime;   
+            else
+            {
+                currentAmmo -= 1;
+                hubRef.AmmoUpdate();
+                ammoPerTime = maxAmmoPerTime;
+            }
         }
+        
             
     }
     #endregion
@@ -243,7 +250,8 @@ public class Weapon_Script : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.Mouse0) && reloading == false)
                 FireWeapon();
 
-            currentAmmo -= 1;
+            if(infiniteAmmo == false)
+                currentAmmo -= 1;
             hubRef.AmmoUpdate();
         }
         else
@@ -255,7 +263,9 @@ public class Weapon_Script : MonoBehaviour
                 if(Input.GetKey(KeyCode.Mouse0) && reloading == false)
                 {
                     FireWeapon();
-                    currentAmmo -= 1;
+                    
+                    if(infiniteAmmo == false)
+                        currentAmmo -= 1;
 
                     hubRef.AmmoUpdate();
                     BPM = totalBPM;
@@ -280,7 +290,7 @@ public class Weapon_Script : MonoBehaviour
     public IEnumerator ReloadWeapon()
     {
         Debug.Log("Recargando...");
-        sound.Play("Reloading");
+        sound.Play(audioName);
         
         reloading = true;
 

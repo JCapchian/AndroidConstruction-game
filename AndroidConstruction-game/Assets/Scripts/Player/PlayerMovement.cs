@@ -10,7 +10,8 @@ public class PlayerMovement : MonoBehaviour
     public Animator MyAnimator;
 
     // Update is called once per frame
-    void FixedUpdate() {
+    void FixedUpdate() 
+    {
         //Horizontal:<- ->, A y D
         //Vertical: Arriba y abajo
         
@@ -22,4 +23,5 @@ public class PlayerMovement : MonoBehaviour
 
         MyAnimator.SetFloat("Movimiento", Mathf.Abs(InputHorizontal) + Mathf.Abs(verticalInput));
     }
+
 }

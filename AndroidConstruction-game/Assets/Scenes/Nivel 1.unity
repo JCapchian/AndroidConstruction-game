@@ -31232,9 +31232,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1165934601902198303, guid: ee3029d6a52d34b489f8dca373367019, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
+    - target: {fileID: 416348033, guid: ee3029d6a52d34b489f8dca373367019, type: 3}
+      propertyPath: maxAmmo
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 416348033, guid: ee3029d6a52d34b489f8dca373367019, type: 3}
+      propertyPath: audioName
+      value: Reloading
+      objectReference: {fileID: 0}
+    - target: {fileID: 416348033, guid: ee3029d6a52d34b489f8dca373367019, type: 3}
+      propertyPath: auidoName
+      value: Reloading
+      objectReference: {fileID: 0}
+    - target: {fileID: 416348033, guid: ee3029d6a52d34b489f8dca373367019, type: 3}
+      propertyPath: currentAmmo
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 416348033, guid: ee3029d6a52d34b489f8dca373367019, type: 3}
+      propertyPath: infiniteAmmo
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1834231410565971874, guid: ee3029d6a52d34b489f8dca373367019, type: 3}
       propertyPath: m_Name
@@ -31246,11 +31262,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4469014401778524204, guid: ee3029d6a52d34b489f8dca373367019, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.21
+      value: -6.33
       objectReference: {fileID: 0}
     - target: {fileID: 4469014401778524204, guid: ee3029d6a52d34b489f8dca373367019, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -25.67
+      value: -25.43
       objectReference: {fileID: 0}
     - target: {fileID: 4469014401778524204, guid: ee3029d6a52d34b489f8dca373367019, type: 3}
       propertyPath: m_LocalPosition.z
@@ -99930,6 +99946,24 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: KeyPick
     clip: {fileID: 8300000, guid: b7d5c8f1f23600d4288eda7d60e8258b, type: 3}
+    volumen: 40
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Reloading_Rifle
+    clip: {fileID: 8300000, guid: 24110dab588e8814a9c46a10e88f8a46, type: 3}
+    volumen: 40
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Reloading_Shotgun
+    clip: {fileID: 8300000, guid: 64250be803a1c9646bf157da4578405f, type: 3}
+    volumen: 40
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Reloading_Laser
+    clip: {fileID: 8300000, guid: 346e127c9fa47da42a3a0e2359116326, type: 3}
     volumen: 40
     pitch: 1
     loop: 0

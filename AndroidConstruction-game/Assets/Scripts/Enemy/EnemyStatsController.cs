@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyStatsController : MonoBehaviour
 {
+    public static List<EnemyStatsController> enemiList;
+
     public RunInfo contadorRun;
 
     public int vidaMaxima = 100;
@@ -23,7 +25,8 @@ public class EnemyStatsController : MonoBehaviour
     private void Awake() 
     {
         vida = vidaMaxima;
-        contadorRun = GameObject.Find("GameManager").GetComponent<RunInfo>();    
+        contadorRun = GameObject.Find("GameManager").GetComponent<RunInfo>();
+        enemiList.Add(this);    
     }
 
     private void OnCollisionEnter2D(Collision2D other) 
@@ -54,6 +57,8 @@ public class EnemyStatsController : MonoBehaviour
             DropLoot();
             //Saves the death of the enemy in the run
             contadorRun.EnemigoEliminado();
+
+            enemiList.Remove(this);
 
             Destroy(gameObject);
         }
