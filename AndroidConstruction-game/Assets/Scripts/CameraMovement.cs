@@ -10,6 +10,11 @@ public class CameraMovement : MonoBehaviour
 
     private Vector3 velocity = Vector3.zero;
 
+    private void Awake() 
+    {
+        target = FindObjectOfType<StatsPlayer>().gameObject.transform;  
+    }
+
     private void Update() 
     {
         Vector3 movePosition = target.position + offset;

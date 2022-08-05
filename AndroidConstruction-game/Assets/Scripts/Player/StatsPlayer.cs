@@ -34,7 +34,9 @@ public class StatsPlayer : MonoBehaviour
         muerto = false;
 
         uiCurrent.text = vida.ToString();
-        uiMax.text = vidaMaxima.ToString();      
+        uiMax.text = vidaMaxima.ToString();     
+
+        GameObject.DontDestroyOnLoad(this.gameObject);
     }
     public void Update()
     {

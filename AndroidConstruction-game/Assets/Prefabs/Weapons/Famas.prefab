@@ -228,9 +228,9 @@ MonoBehaviour:
   speed: 20
   maxAmmo: 20
   currentAmmo: 0
-  reloadTime: 5
+  reloadTime: 2
   reloading: 0
-  damage: 20
+  damage: 30
   distanceRay: 100
   maxChargeTime: 0
   chargeTime: 0
@@ -5021,7 +5021,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0

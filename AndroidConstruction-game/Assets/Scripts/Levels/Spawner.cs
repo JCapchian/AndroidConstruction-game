@@ -6,8 +6,10 @@ using UnityEngine.Events;
 public class Spawner : MonoBehaviour
 {
     public List<GameObject> enemiesList = new List<GameObject>();
-    public GameObject[] spawnsPoints;
+    public Transform[] spawnsPoints;
     public GameObject[] doorsPoints;
+    public GameObject loot;
+    public Transform lootDrop;
     public GameObject zoneEnemy;
     public GameObject turretEnemy;
     public BoxCollider2D triggerZone;
@@ -32,7 +34,7 @@ public class Spawner : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
-        if(other.gameObject.tag == "Player" && active == false)
+        if(active == false && other.gameObject.tag == "Player")
         {
             active = true;
             triggerZone.size = new Vector2(20.25f,20.73f);
@@ -61,7 +63,7 @@ public class Spawner : MonoBehaviour
             ActivateSpawner();
         
         if(quantitySpawns == 0 && enemiesList.Count == 0)
-            DesactivateSpawner();
+            CloseOpenDoors(false);
     }
 
     private void ActivateSpawner()
@@ -71,10 +73,7 @@ public class Spawner : MonoBehaviour
         {
             timeSpawn = maxTimeSpawn;
             // Spawn Doors
-            for (var i = 0; i < doorsPoints.Length; i++)
-            {
-                doorsPoints[i].active = true;
-            }
+            CloseOpenDoors(true);
 
             first = true;
         }
@@ -86,34 +85,47 @@ public class Spawner : MonoBehaviour
         }
         else
         {
-            for (var i = 0; i < spawnsPoints.Length; i++)
-            {
-                if(quantitySpawns == 1)
-                {
-                    Instantiate(turretEnemy, spawnsPoints[i].transform.position, spawnsPoints[i].transform.rotation);
-                    Debug.Log("Ultimo Enemigo");
-                    Destroy(spawnsPoints[i]);
-                    Debug.Log(spawnsPoints.Length);
-                }
-                else
-                {
-                    Instantiate(zoneEnemy, spawnsPoints[i].transform.position, spawnsPoints[i].transform.rotation);
-                    Debug.Log("Enemigo numero: " + quantitySpawns);
-                }
-            }
-            quantitySpawns -= 1; 
+            SpawnEnemies();
+            
             timeSpawn = maxTimeSpawn;
         }
     }
 
-    private void DesactivateSpawner()
+    private void SpawnLoot()
+    {
+        Instantiate(loot, lootDrop.transform.position, lootDrop.transform.rotation);
+    }
+
+    private void SpawnEnemies()
+    {
+        for (var i = 0; i < spawnsPoints.Length; i++)
+        {
+            if(quantitySpawns == 1)
+            {
+                Instantiate(turretEnemy, spawnsPoints[i].transform.position, spawnsPoints[i].transform.rotation);
+                Debug.Log("Ultimo Enemigo");
+                spawnsPoints[i] = null;
+                CloseOpenDoors(false);
+                SpawnLoot();
+                this.gameObject.GetComponent<Spawner>().enabled = false;
+            }
+            else
+            {
+                Instantiate(zoneEnemy, spawnsPoints[i].transform.position, spawnsPoints[i].transform.rotation);
+                Debug.Log("Enemigo numero: " + quantitySpawns);
+            }
+        }
+        quantitySpawns -= 1;
+    }
+
+    private void CloseOpenDoors(bool onOff)
     {
         for (var i = 0; i < doorsPoints.Length; i++)
         {
-            doorsPoints[i].active = false;
+            if(onOff == true)
+                doorsPoints[i].active = true;
+            else
+                doorsPoints[i].active = false;
         }
-        
-        Destroy(this, 1f);
     }
-
 }

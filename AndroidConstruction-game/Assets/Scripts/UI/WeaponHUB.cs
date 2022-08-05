@@ -8,13 +8,13 @@ public class WeaponHUB : MonoBehaviour
 {
     public TMP_Text curretAmmo;
     public TMP_Text invAmmo;
-    public Image weaponIcon;
+    public SpriteRenderer weaponIcon;
 
     public Inventory invPlayer;
     
     public void UpdateIcon(Sprite Weapon)
     {
-        //weaponIcon.sprite = Weapon;
+        weaponIcon.sprite = Weapon;
     }
 
     public void ColorSet()

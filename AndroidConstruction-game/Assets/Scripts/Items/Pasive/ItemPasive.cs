@@ -19,16 +19,11 @@ public class ItemPasive : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
+            sP = GameObject.Find("Player").GetComponent<StatsPlayer>();
             PickItem();
         }
     }
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        if(Input.GetButtonDown("Submit") && other.gameObject.tag == "Player")
-        {
-            PickItem();
-        }
-    }
+
 
     public void PickItem()
     {

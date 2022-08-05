@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1250873275
 Transform:
   m_ObjectHideFlags: 0
@@ -183,9 +183,6 @@ MonoBehaviour:
   lootPrefab:
   - {fileID: 6357578757306896288, guid: 650b8f75ea8428243b918707cf328f56, type: 3}
   - {fileID: 2294583589588166039, guid: e8b2e79ac2a950146b4798af18406776, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!58 &168250956
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -240,7 +237,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7531126334653278570
 Transform:
   m_ObjectHideFlags: 0

@@ -13,19 +13,13 @@ public class DetectionZone : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) 
     {
         if(other.gameObject.tag == "Player")
-        {
-            detected = true;
             enemyMovement.enabled = true;
-        }
     }
 
     private void OnTriggerExit2D(Collider2D other) 
     {
         if(other.gameObject.tag == "Player")
-        {
-            detected = false;
             enemyMovement.enabled = false;
-        }
     }
 
     // Start is called before the first frame update

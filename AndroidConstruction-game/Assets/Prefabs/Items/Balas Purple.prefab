@@ -114,5 +114,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inv: {fileID: 0}
   ammoType: Purple
-  maxAmmo: 50
+  maxAmmo: 20
   minAmmo: 10

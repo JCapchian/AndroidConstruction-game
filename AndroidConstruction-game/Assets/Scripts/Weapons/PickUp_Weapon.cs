@@ -23,7 +23,7 @@ public class PickUp_Weapon : MonoBehaviour
             entro = true;
             Debug.Log(entro);
             
-            WeaponInventory = other.gameObject.GetComponent<Inventory>();
+            WeaponInventory = other.gameObject.transform.GetComponent<Inventory>();
             weaponContainer = other.gameObject.transform.GetChild(0).gameObject;
         }   
     }

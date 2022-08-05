@@ -119,9 +119,6 @@ MonoBehaviour:
   lootPrefab:
   - {fileID: 6357578757306896288, guid: 650b8f75ea8428243b918707cf328f56, type: 3}
   - {fileID: 2294583589588166039, guid: e8b2e79ac2a950146b4798af18406776, type: 3}
-  - {fileID: 1982236066126366712, guid: d57b58c4a61140f4b885a47f2f2d1a62, type: 3}
-  - {fileID: 5270149634337297671, guid: 351bb729704f70d4d8fae96aed630655, type: 3}
-  - {fileID: 7208091681751390123, guid: 4544813b29d2771419653a9993d08290, type: 3}
 --- !u!58 &2360837505791829959
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -153,7 +150,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 6
+  m_Radius: 14.5
 --- !u!114 &1805937394
 MonoBehaviour:
   m_ObjectHideFlags: 0

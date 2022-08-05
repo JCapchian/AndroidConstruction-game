@@ -189,7 +189,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -6580372187771970348, guid: a45a85ec0a6096049b31633e24a6d96a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -220,7 +220,7 @@ MonoBehaviour:
   hubRef: {fileID: 0}
   audioName: Reloading_Shotgun
   weaponType: Shotgun
-  ammoType: Green
+  ammoType: Purple
   semi: 0
   BPM: 0
   infiniteAmmo: 0
@@ -228,9 +228,9 @@ MonoBehaviour:
   speed: 10
   maxAmmo: 8
   currentAmmo: 0
-  reloadTime: 5
+  reloadTime: 1
   reloading: 0
-  damage: 5
+  damage: 10
   distanceRay: 100
   maxChargeTime: 1
   chargeTime: 0
@@ -5021,7 +5021,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
