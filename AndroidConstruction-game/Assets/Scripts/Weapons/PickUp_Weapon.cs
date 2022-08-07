@@ -27,12 +27,13 @@ public class PickUp_Weapon : MonoBehaviour
             weaponContainer = other.gameObject.transform.GetChild(0).gameObject;
         }   
     }
-
+    /*
     private void Update() 
     {
         if(Input.GetButtonDown("Submit") && entro == true)
             EquipWeapon();
     }
+    */
 
     private void OnTriggerExit2D(Collider2D other) 
     {

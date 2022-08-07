@@ -30,6 +30,7 @@ public class Pausa : MonoBehaviour
     }
     private void Update()
     {
+        /*
         if (Input.GetKeyDown(KeyCode.P))
         {
         if (Time.timeScale > 0)
@@ -37,6 +38,7 @@ public class Pausa : MonoBehaviour
         else
             Resume();
         }
+        */
     }
     public void Resume()
     {

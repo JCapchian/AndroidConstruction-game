@@ -13,7 +13,7 @@ public class StatsPlayer : MonoBehaviour
     public int energia;
     public bool muerto;
 
-    public PlayerMovement movement;
+    
     public Inventory inventory;
 
     public HealthBar hB;

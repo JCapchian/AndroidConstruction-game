@@ -11,7 +11,7 @@ public class AimController : MonoBehaviour
     Camera mainCamera;
 
     // Start is called before the first frame update
-    void Start()
+    void Start() 
     {
         if(mainCamera == null)
             mainCamera = Camera.main;

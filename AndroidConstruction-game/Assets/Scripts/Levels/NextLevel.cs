@@ -17,11 +17,13 @@ public class NextLevel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         if(Input.GetKeyDown(KeyCode.E) && entro == true)
         {
             Debug.Log("Le doy a la E");
             m_levelLoader.LoadNextLevel();
         }
+        */
     }
 
     private void OnTriggerEnter2D(Collider2D other) 
