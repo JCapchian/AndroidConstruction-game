@@ -10,7 +10,7 @@ public class WeaponHUB : MonoBehaviour
     public TMP_Text invAmmo;
     public SpriteRenderer weaponIcon;
 
-    public Inventory invPlayer;
+    //public Inventory invPlayer;
     
     public void UpdateIcon(Sprite Weapon)
     {
@@ -19,6 +19,7 @@ public class WeaponHUB : MonoBehaviour
 
     public void ColorSet()
     {
+        /*
         switch (invPlayer.weaponActive.GetComponent<Weapon_Script>().ammoType.ToString())
         {
             case "Grey":
@@ -31,10 +32,12 @@ public class WeaponHUB : MonoBehaviour
                 invAmmo.color = new Color32(149, 0, 255,255);
                 break;
         }
+        */
     }
     
     public void AmmoUpdate()
     {
+        /*
         curretAmmo.text = invPlayer.weaponActive.GetComponent<Weapon_Script>().currentAmmo.ToString();
         switch (invPlayer.weaponActive.GetComponent<Weapon_Script>().ammoType.ToString())
         {
@@ -48,6 +51,7 @@ public class WeaponHUB : MonoBehaviour
                invAmmo.text = invPlayer.purpleAmmo.ToString();
                 break;
         }
+        */
     }
 
     // Start is called before the first frame update

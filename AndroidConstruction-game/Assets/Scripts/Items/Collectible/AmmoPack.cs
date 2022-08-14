@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AmmoPack : MonoBehaviour
 {
-    public Inventory inv;
+    //public Inventory inv;
     public string ammoType;
     public int maxAmmo;
     public int minAmmo;
@@ -13,12 +13,12 @@ public class AmmoPack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        inv = GameObject.Find("Player").GetComponent<Inventory>();
+        //inv = GameObject.Find("Player").GetComponent<Inventory>();
     }
 
     private void Awake() 
     {
-        inv = GameObject.Find("Player").GetComponent<Inventory>();
+        //inv = GameObject.Find("Player").GetComponent<Inventory>();
     }
 
     private void OnTriggerEnter2D(Collider2D other) 
@@ -27,7 +27,7 @@ public class AmmoPack : MonoBehaviour
         {
             //Almacenar
             ammoQuantity = Random.Range(minAmmo,maxAmmo);
-            inv.CollectAmmo(ammoQuantity,ammoType);
+            //inv.CollectAmmo(ammoQuantity,ammoType);
             FindObjectOfType<AudioManager>().Play("PickUpAmmo");
 
             //Informacion a mostrar en consola

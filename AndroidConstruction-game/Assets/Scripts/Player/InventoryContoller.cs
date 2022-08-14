@@ -8,7 +8,7 @@ public class InventoryContoller : MonoBehaviour
     public GameObject weaponContainer;
     public GameObject newWeapon;
     public Weapon_Script WeaponCode;
-    public PickUp_Weapon PKPW;
+    //public PickUp_Weapon PKPW;
     public int weaponCount;
     private int activeWeapon = 0;
     //public int maxAmmo;
@@ -33,7 +33,7 @@ public class InventoryContoller : MonoBehaviour
     {
         Debug.Log(weaponContainer.transform.childCount);
         weaponCount = weaponContainer.transform.childCount;
-        PKPW = weaponContainer.transform.GetChild(weaponCount-1).GetComponent<PickUp_Weapon>();
+        //PKPW = weaponContainer.transform.GetChild(weaponCount-1).GetComponent<PickUp_Weapon>();
         if(activeWeapon == 0)
             activeWeapon = 1;
 
@@ -96,14 +96,14 @@ public class InventoryContoller : MonoBehaviour
             Debug.Log("Entre 1");
             Debug.Log(weaponContainer.transform.GetChild(2));
             weaponContainer.transform.GetChild(2).gameObject.transform.parent = null;
-            PKPW.UnequipWeapon();
+            //PKPW.UnequipWeapon();
         }
         if(activeWeapon == 2)
         {
             Debug.Log("Entre 2");
             Debug.Log(weaponContainer.transform.GetChild(1));
             weaponContainer.transform.GetChild(1).gameObject.transform.parent = null;
-            PKPW.UnequipWeapon();
+            //PKPW.UnequipWeapon();
         }
     }
 
@@ -118,14 +118,14 @@ public class InventoryContoller : MonoBehaviour
                 {
                     weaponContainer.transform.GetChild(0).gameObject.SetActive(true);
                     weaponContainer.transform.GetChild(1).gameObject.SetActive(false);
-                    PKPW = weaponContainer.transform.GetChild(0).GetComponent<PickUp_Weapon>();
+                    //PKPW = weaponContainer.transform.GetChild(0).GetComponent<PickUp_Weapon>();
                     activeWeapon = 2;
                 }
                 else
                 {
                     weaponContainer.transform.GetChild(1).gameObject.SetActive(true);
                     weaponContainer.transform.GetChild(0).gameObject.SetActive(false);
-                    PKPW = weaponContainer.transform.GetChild(1).GetComponent<PickUp_Weapon>();
+                    //PKPW = weaponContainer.transform.GetChild(1).GetComponent<PickUp_Weapon>();
                     activeWeapon = 1;
                 }   
         }

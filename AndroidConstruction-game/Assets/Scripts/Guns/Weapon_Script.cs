@@ -9,8 +9,8 @@ public class Weapon_Script : MonoBehaviour
     public GameObject proyectilePrefab;
     public Transform cannon;
     [SerializeField]
-    private Inventory inv;
-    [SerializeField]
+    //private Inventory inv;
+    //[SerializeField]
     private AudioManager sound;
     [SerializeField]
     private WeaponHUB hubRef;
@@ -61,7 +61,7 @@ public class Weapon_Script : MonoBehaviour
     private void Awake() {
         //Scripts Things
         sound = GameObject.Find("AudioManager").GetComponent<AudioManager>();
-        inv = GameObject.Find("Player").GetComponent<Inventory>();
+        //inv = GameObject.Find("Player").GetComponent<Inventory>();
         hubRef = GameObject.Find("UIArma").GetComponent<WeaponHUB>();
         ref_TransformGun = GetComponent<Transform>();
         
@@ -79,9 +79,10 @@ public class Weapon_Script : MonoBehaviour
     // Start is called before the first frame update
     private void OnCollisionEnter2D(Collision2D other) 
     {
+        /*
         if(other.gameObject.tag == "Player")
             inv = other.gameObject.GetComponent<Inventory>();
-
+        */
     }
 
     // Update is called once per frame
@@ -111,11 +112,12 @@ public class Weapon_Script : MonoBehaviour
             if(currentAmmo < maxAmmo)
             {
                 reloadAmmo = maxAmmo - currentAmmo;
-
+/*
                 if(inv.GetAmmo(ammoType) >= reloadAmmo)
                     StartCoroutine(ReloadWeapon());
                 else
                     Debug.Log("No municion en el inventario");
+*/
             }
             else
                 Debug.Log("Aun hay municion en el cargador");
@@ -299,7 +301,7 @@ public class Weapon_Script : MonoBehaviour
         reloading = false;
 
         currentAmmo += reloadAmmo;
-        inv.UsedAmmo(reloadAmmo,ammoType);
+        //inv.UsedAmmo(reloadAmmo,ammoType);
         
         hubRef.AmmoUpdate();
         

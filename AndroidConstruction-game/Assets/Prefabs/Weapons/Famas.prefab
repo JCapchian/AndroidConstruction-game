@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 6962728946078489420}
   - component: {fileID: 5659774219160663423}
   - component: {fileID: 6820057311782587617}
-  - component: {fileID: 6820057311782587616}
+  - component: {fileID: 7087852942436408356}
   - component: {fileID: 1456902610274917808}
   - component: {fileID: 6820057312885559307}
   - component: {fileID: 6820057312885559308}
@@ -215,7 +215,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   proyectilePrefab: {fileID: 8972060001789191498, guid: 4931380d53b074f42b44dfa89bc05342, type: 3}
   cannon: {fileID: 5507629586079867277}
-  inv: {fileID: 0}
   sound: {fileID: 0}
   hubRef: {fileID: 0}
   audioName: Reloading_Rifle
@@ -243,7 +242,7 @@ MonoBehaviour:
   targetedEnemy: {fileID: 0}
   amountOfBullets: 0
   spread: 0
---- !u!114 &6820057311782587616
+--- !u!114 &7087852942436408356
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -252,13 +251,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 5175139833234736322}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c1f59ea8ac25b448aa1f1e99bdf223f, type: 3}
+  m_Script: {fileID: 11500000, guid: 1b70c17384d541c49a0e6f5e917afaf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WeaponInventory: {fileID: 0}
-  weaponContainer: {fileID: 0}
-  imageKey: {fileID: 637571965}
-  entro: 0
+  spriteRenderer: {fileID: 0}
+  gunContainer: {fileID: 0}
+  imageKey: {fileID: 0}
+  playerScript: {fileID: 0}
+  pickArea: {fileID: 0}
 --- !u!58 &1456902610274917808
 CircleCollider2D:
   m_ObjectHideFlags: 0

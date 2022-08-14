@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CrosshairScript : MonoBehaviour
 {
@@ -11,12 +12,10 @@ public class CrosshairScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    /*
     void Update()
     {
-        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        transform.position = mousePosition;
         
+        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+        transform.position = mousePosition;
     }
-    */
 }

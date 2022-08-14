@@ -14,7 +14,7 @@ public class StatsPlayer : MonoBehaviour
     public bool muerto;
 
     
-    public Inventory inventory;
+    //public Inventory inventory;
 
     public HealthBar hB;
     public TMP_Text uiCurrent;
@@ -42,8 +42,8 @@ public class StatsPlayer : MonoBehaviour
     {
         if(vida == 0)
         {
-            movement.enabled = false;
-            inventory.DisableWeapon();
+            //movement.enabled = false;
+            //inventory.DisableWeapon();
 
             MyAnimator.SetTrigger("Death"); 
             StartCoroutine(ReinicioEscena());

@@ -23,4 +23,5 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Levels/NivelPrubas.unity
     guid: cc585405dc59c1546a3e7668e3906e67
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 3a55167201af79b4eba697a0a7401d54, type: 2}

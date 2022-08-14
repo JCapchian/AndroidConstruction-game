@@ -44,16 +44,43 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""FireWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""62ce5aa4-c0ff-4ec6-80e3-c6283ef4b493"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MouseMovement"",
+                    ""type"": ""Button"",
+                    ""id"": ""a222390d-70a5-47f3-8f60-1783a7d1461b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwitchGun"",
+                    ""type"": ""Button"",
+                    ""id"": ""fa00dcc7-61fb-4011-8c70-96d8e6189893"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press(pressPoint=5)"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
                     ""id"": ""8df7ffc9-53bd-497b-b51c-7be8416c8016"",
-                    ""path"": ""<Keyboard>/#(E)"",
-                    ""interactions"": """",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": ""Press"",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard and Mouse"",
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -112,16 +139,135 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Arrow Keys"",
+                    ""id"": ""db2c00be-10f3-4aef-a408-0e1fb3e417af"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Up"",
+                    ""id"": ""ef8df37c-bcc1-4294-9bcb-c9f4b3981bde"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Down"",
+                    ""id"": ""23d33cdd-4352-4b98-847d-ffe2f4a43bf8"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Left"",
+                    ""id"": ""d6c8d0f4-1282-4514-91e2-6db68aa6f53a"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Right"",
+                    ""id"": ""02f921cc-c3f1-4fdb-ba42-44308ec5559d"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""445807ad-47de-4a90-9a6f-b2480d72899e"",
+                    ""path"": ""<Mouse>/press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FireWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""41f86975-c884-46c4-a88b-0e7671a539c4"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""MouseMovement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Two Modifiers"",
+                    ""id"": ""38bf5545-7153-4f01-9f9d-3e01dcf631c7"",
+                    ""path"": ""TwoModifiers"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MouseMovement"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1f9dc99d-8700-4226-8c90-901077d4a80f"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": ""Press(pressPoint=1,behavior=2)"",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""SwitchGun"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
     ],
-    ""controlSchemes"": []
+    ""controlSchemes"": [
+        {
+            ""name"": ""Keyboard and Mouse"",
+            ""bindingGroup"": ""Keyboard and Mouse"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Keyboard>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                },
+                {
+                    ""devicePath"": ""<Mouse>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
+        }
+    ]
 }");
         // PlayerControls
         m_PlayerControls = asset.FindActionMap("PlayerControls", throwIfNotFound: true);
         m_PlayerControls_Interact = m_PlayerControls.FindAction("Interact", throwIfNotFound: true);
         m_PlayerControls_Movement = m_PlayerControls.FindAction("Movement", throwIfNotFound: true);
+        m_PlayerControls_FireWeapon = m_PlayerControls.FindAction("FireWeapon", throwIfNotFound: true);
+        m_PlayerControls_MouseMovement = m_PlayerControls.FindAction("MouseMovement", throwIfNotFound: true);
+        m_PlayerControls_SwitchGun = m_PlayerControls.FindAction("SwitchGun", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -183,12 +329,18 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
     private IPlayerControlsActions m_PlayerControlsActionsCallbackInterface;
     private readonly InputAction m_PlayerControls_Interact;
     private readonly InputAction m_PlayerControls_Movement;
+    private readonly InputAction m_PlayerControls_FireWeapon;
+    private readonly InputAction m_PlayerControls_MouseMovement;
+    private readonly InputAction m_PlayerControls_SwitchGun;
     public struct PlayerControlsActions
     {
         private @PlayerAction m_Wrapper;
         public PlayerControlsActions(@PlayerAction wrapper) { m_Wrapper = wrapper; }
         public InputAction @Interact => m_Wrapper.m_PlayerControls_Interact;
         public InputAction @Movement => m_Wrapper.m_PlayerControls_Movement;
+        public InputAction @FireWeapon => m_Wrapper.m_PlayerControls_FireWeapon;
+        public InputAction @MouseMovement => m_Wrapper.m_PlayerControls_MouseMovement;
+        public InputAction @SwitchGun => m_Wrapper.m_PlayerControls_SwitchGun;
         public InputActionMap Get() { return m_Wrapper.m_PlayerControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -204,6 +356,15 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                 @Movement.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMovement;
                 @Movement.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMovement;
                 @Movement.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMovement;
+                @FireWeapon.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnFireWeapon;
+                @FireWeapon.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnFireWeapon;
+                @FireWeapon.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnFireWeapon;
+                @MouseMovement.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMouseMovement;
+                @MouseMovement.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMouseMovement;
+                @MouseMovement.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMouseMovement;
+                @SwitchGun.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSwitchGun;
+                @SwitchGun.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSwitchGun;
+                @SwitchGun.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSwitchGun;
             }
             m_Wrapper.m_PlayerControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -214,13 +375,34 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                 @Movement.started += instance.OnMovement;
                 @Movement.performed += instance.OnMovement;
                 @Movement.canceled += instance.OnMovement;
+                @FireWeapon.started += instance.OnFireWeapon;
+                @FireWeapon.performed += instance.OnFireWeapon;
+                @FireWeapon.canceled += instance.OnFireWeapon;
+                @MouseMovement.started += instance.OnMouseMovement;
+                @MouseMovement.performed += instance.OnMouseMovement;
+                @MouseMovement.canceled += instance.OnMouseMovement;
+                @SwitchGun.started += instance.OnSwitchGun;
+                @SwitchGun.performed += instance.OnSwitchGun;
+                @SwitchGun.canceled += instance.OnSwitchGun;
             }
         }
     }
     public PlayerControlsActions @PlayerControls => new PlayerControlsActions(this);
+    private int m_KeyboardandMouseSchemeIndex = -1;
+    public InputControlScheme KeyboardandMouseScheme
+    {
+        get
+        {
+            if (m_KeyboardandMouseSchemeIndex == -1) m_KeyboardandMouseSchemeIndex = asset.FindControlSchemeIndex("Keyboard and Mouse");
+            return asset.controlSchemes[m_KeyboardandMouseSchemeIndex];
+        }
+    }
     public interface IPlayerControlsActions
     {
         void OnInteract(InputAction.CallbackContext context);
         void OnMovement(InputAction.CallbackContext context);
+        void OnFireWeapon(InputAction.CallbackContext context);
+        void OnMouseMovement(InputAction.CallbackContext context);
+        void OnSwitchGun(InputAction.CallbackContext context);
     }
 }
