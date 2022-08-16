@@ -199,12 +199,11 @@ GameObject:
   - component: {fileID: 6714951320771275791}
   - component: {fileID: 4657989865578904785}
   - component: {fileID: 6249030552188233249}
-  - component: {fileID: 7543649535957416722}
-  - component: {fileID: 2367051610653661203}
   - component: {fileID: 1649649777}
   - component: {fileID: 1551797205}
   - component: {fileID: 1551797199}
   - component: {fileID: 1499887271448157850}
+  - component: {fileID: 834873350573260593}
   - component: {fileID: 3608176379896556730}
   m_Layer: 3
   m_Name: Player
@@ -302,47 +301,6 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &7543649535957416722
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7721060982835076004}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8dc6626315cdbc54eab672fcdf60441f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vidaMaxima: 100
-  vida: 100
-  energia: 0
-  muerto: 0
-  inventory: {fileID: 0}
-  hB: {fileID: 0}
-  uiCurrent: {fileID: 0}
-  uiMax: {fileID: 0}
-  UI: {fileID: 0}
-  transition: {fileID: 0}
-  MyAnimator: {fileID: 1551797199}
-  transitionTime: 1
---- !u!114 &2367051610653661203
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7721060982835076004}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6847bf29ae9793b4aa1ed31d6ce29507, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponActive: {fileID: 0}
-  weaponSprite: {fileID: 0}
-  greyAmmo: 50
-  greenAmmo: 50
-  purpleAmmo: 0
 --- !u!58 &1649649777
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -486,21 +444,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da0200b508632a145ab9108d683e2a5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gunContainer: {fileID: 0}
   maxHealth: 0
-  energy: 0
   death: 0
+  energy: 0
   movementSpeed: 5
   greyAmmo: 0
   greenAmmo: 0
   purpleAmmo: 0
-  gunActive: {fileID: 0}
+  gunActive: 0
+  pickUp_Gun: {fileID: 0}
   primaryGun: {fileID: 0}
   secondaryGun: {fileID: 0}
   pickUp_ItemActive: {fileID: 0}
   activeItem: {fileID: 0}
   haveActiveItem: 0
   pasiveItem: []
-  dropPoints: []
+  hB: {fileID: 0}
+  uiCurrent: {fileID: 0}
+  uiMax: {fileID: 0}
+  UI: {fileID: 0}
+  transitionTime: 1
+  transition: {fileID: 0}
+  MyAnimator: {fileID: 0}
+--- !u!114 &834873350573260593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7721060982835076004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13bfe63cfb536bb4d92a446337f6435b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3608176379896556730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -542,6 +520,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: a222390d-70a5-47f3-8f60-1783a7d1461b
     m_ActionName: PlayerControls/MouseMovement
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fa00dcc7-61fb-4011-8c70-96d8e6189893
+    m_ActionName: PlayerControls/SwitchGun[/Keyboard/q]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerControls

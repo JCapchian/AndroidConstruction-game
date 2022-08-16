@@ -12,7 +12,7 @@ public class CameraMovement : MonoBehaviour
 
     private void Awake() 
     {
-        target = FindObjectOfType<StatsPlayer>().gameObject.transform;  
+        target = FindObjectOfType<PlayerScript>().gameObject.transform;  
     }
 
     private void Update() 

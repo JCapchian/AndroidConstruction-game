@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!95 &4251656 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1551797199, guid: 8cafcab70ba03244b9daee5b8b320684, type: 3}
+  m_PrefabInstance: {fileID: 3608176379896556728}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4414977
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3565,7 +3570,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 541836619}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.3, y: -25.42, z: 0}
+  m_LocalPosition: {x: -3.7999995, y: -14.17, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 823506513}
@@ -31783,7 +31788,6 @@ MonoBehaviour:
   curretAmmo: {fileID: 969720265}
   invAmmo: {fileID: 1051577638}
   weaponIcon: {fileID: 382869840}
-  invPlayer: {fileID: 0}
 --- !u!1 &760908782
 GameObject:
   m_ObjectHideFlags: 0
@@ -32580,7 +32584,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 903856527}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.88, y: -25.51, z: 0}
+  m_LocalPosition: {x: -12.98, y: -14.26, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1070776679}
@@ -32834,7 +32838,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 913514619}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.6200001, y: -25.51, z: 0}
+  m_LocalPosition: {x: -9.719999, y: -14.26, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1090590807}
@@ -104041,13 +104045,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb1f287fe24e4c542a089793643f0619, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  equipmentType: Active
-  spriteRenderer: {fileID: 0}
-  imageKey: {fileID: 0}
-  pickArea: {fileID: 0}
-  playerScript: {fileID: 0}
-  activeSpace: {fileID: 0}
-  gunContainer: {fileID: 0}
 --- !u!212 &1388989091
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -105839,13 +105836,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb1f287fe24e4c542a089793643f0619, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  equipmentType: Active
-  spriteRenderer: {fileID: 0}
-  imageKey: {fileID: 0}
-  pickArea: {fileID: 0}
-  playerScript: {fileID: 0}
-  activeSpace: {fileID: 0}
-  gunContainer: {fileID: 0}
 --- !u!212 &1943873214
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -107222,6 +107212,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1499887271448157850, guid: 8cafcab70ba03244b9daee5b8b320684, type: 3}
+      propertyPath: UI
+      value: 
+      objectReference: {fileID: 1132390680}
+    - target: {fileID: 1499887271448157850, guid: 8cafcab70ba03244b9daee5b8b320684, type: 3}
+      propertyPath: hB
+      value: 
+      objectReference: {fileID: 391057240}
+    - target: {fileID: 1499887271448157850, guid: 8cafcab70ba03244b9daee5b8b320684, type: 3}
+      propertyPath: uiMax
+      value: 
+      objectReference: {fileID: 506227557}
+    - target: {fileID: 1499887271448157850, guid: 8cafcab70ba03244b9daee5b8b320684, type: 3}
+      propertyPath: maxHealth
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1499887271448157850, guid: 8cafcab70ba03244b9daee5b8b320684, type: 3}
+      propertyPath: uiCurrent
+      value: 
+      objectReference: {fileID: 909499758}
+    - target: {fileID: 1499887271448157850, guid: 8cafcab70ba03244b9daee5b8b320684, type: 3}
+      propertyPath: MyAnimator
+      value: 
+      objectReference: {fileID: 4251656}
+    - target: {fileID: 1499887271448157850, guid: 8cafcab70ba03244b9daee5b8b320684, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 2102404455}
     - target: {fileID: 6714951320771275791, guid: 8cafcab70ba03244b9daee5b8b320684, type: 3}
       propertyPath: m_RootOrder
       value: 52
@@ -107290,7 +107308,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2367051610653661203, guid: 8cafcab70ba03244b9daee5b8b320684, type: 3}
+    - {fileID: 7543649535957416722, guid: 8cafcab70ba03244b9daee5b8b320684, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8cafcab70ba03244b9daee5b8b320684, type: 3}
 --- !u!1001 &8672551289085469970
 PrefabInstance:

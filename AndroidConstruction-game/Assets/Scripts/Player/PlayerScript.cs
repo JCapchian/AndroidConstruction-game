@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+
 
 public class PlayerScript : MonoBehaviour
 {   
@@ -22,15 +24,13 @@ public class PlayerScript : MonoBehaviour
     [Header ("Estadistacas Jugador")]
     public int maxHealth;
     private int health;
-    public int energy;
     public bool death;
-    [SerializeField]
-    private float movementSpeed;
-
-    [Header ("Inventario Jugador")]
+    public int energy;
+    public float movementSpeed;
 
     #region Ammo & Guns
-    
+
+    [Header ("Inventario Jugador")]
     public int greyAmmo;
     public int greenAmmo;
     public int purpleAmmo;
@@ -48,16 +48,31 @@ public class PlayerScript : MonoBehaviour
     #endregion
 
     #region Objects
+    [Header ("Objetos")]
     public PickUp_ItemActive pickUp_ItemActive;
     public GameObject activeItem;
     public float haveActiveItem;
     public GameObject[] pasiveItem;
 
-    #endregion
-    
-    #region Inventory
-    
+    #endregion 
 
+    #region UIElements
+
+    [Header ("Elementos UI")]
+    public HealthBar hB;
+    public TMP_Text uiCurrent;
+    public TMP_Text uiMax;
+    public Pausa UI;
+    public float transitionTime = 1f;
+    
+    #endregion
+
+    #region Animations
+    
+    [Header ("Animaciones")]
+    public Animator transition;
+    public Animator MyAnimator;
+    public Vector2 movementInput;
     
     #endregion
     
@@ -72,6 +87,16 @@ public class PlayerScript : MonoBehaviour
 
         // Define GunSlots
         gunContainer = this.transform.GetChild(0).GetChild(0).gameObject;
+
+        //UI
+        health = maxHealth;
+        hB.SetMaxHealth(maxHealth);
+        hB.SetHealth(health);
+
+        uiCurrent.text = health.ToString();
+        uiMax.text = maxHealth.ToString();   
+
+        death = false;
 
     }
 
@@ -92,6 +117,15 @@ public class PlayerScript : MonoBehaviour
             Invoke("SwitchGun",10f);
             //SwitchGun();
         
+        //Death
+        if(health == 0)
+        {
+            //movement.enabled = false;
+            //inventory.DisableWeapon();
+
+            MyAnimator.SetBool("Death", true); 
+            StartCoroutine(ReinicioEscena());
+        }
     }
 
     private void OnEnable() {
@@ -106,6 +140,8 @@ public class PlayerScript : MonoBehaviour
     
     private void PollInput(){
         var movementInputVector = playerAction.PlayerControls.Movement.ReadValue<Vector2>();
+        movementInput = movementInputVector;
+        Debug.Log(movementInput);
         Move(movementInputVector);
     }
 
@@ -113,19 +149,69 @@ public class PlayerScript : MonoBehaviour
 
     #region Movement
 
-    private void Move (Vector2 inputVector){
+    public void Move (Vector2 inputVector){
         var movementOffset = inputVector * movementSpeed * Time.fixedDeltaTime;
         var newPosition = rb.position + movementOffset;
         rb.MovePosition(newPosition);
+        //MyAnimator.SetFloat("Movimiento", movementOffset);
     }
 
-    #endregion
-
-    #region Aim
+    
 
     #endregion
 
     #region StatsPlayer
+
+    #region UI
+
+    public void SumarVida(int healthGain)
+    {
+        Debug.Log(health);
+        health += healthGain;
+        hB.SetHealth(health);
+        uiCurrent.text = health.ToString();
+    }
+
+    public void PerderVida(int healthLess)
+    {
+
+        if(health > 0)
+        {
+            health = health - healthLess;
+            hB.SetHealth(health);
+            uiCurrent.text = health.ToString();
+            Debug.Log(health);
+        }
+        
+    }
+
+    #endregion
+    
+    #region Scenes
+
+    IEnumerator ReinicioEscena()
+    {
+        //tartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex));
+        yield return new WaitForSeconds(1.5f);
+
+        UI.SHowDeathScreen();
+    }
+
+    IEnumerator LoadLevel(int levelIndex)
+    {
+        yield return new WaitForSeconds(2);
+        
+        //Play Animation
+        transition.SetTrigger("Start");
+
+        //Wait
+        yield return new WaitForSeconds(transitionTime);
+
+        //Load Scene
+        SceneManager.LoadScene(levelIndex);
+    }
+
+    #endregion
 
     #endregion
 
