@@ -92,11 +92,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4469014401778524204}
   - component: {fileID: 1165934601902198303}
-  - component: {fileID: 416348033}
-  - component: {fileID: 416348032}
   - component: {fileID: 5373428540887606992}
   - component: {fileID: 1511189355}
   - component: {fileID: 1511189356}
+  - component: {fileID: 8423881773346970523}
   m_Layer: 0
   m_Name: Pistol
   m_TagString: Weapon
@@ -171,64 +170,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &416348033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1834231410565971874}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88e471ea4c6a50641b0fe8cbe71c678f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  proyectilePrefab: {fileID: 8972060001789191498, guid: 4931380d53b074f42b44dfa89bc05342, type: 3}
-  cannon: {fileID: 1354090420722948845}
-  inv: {fileID: 0}
-  sound: {fileID: 0}
-  hubRef: {fileID: 0}
-  audioName: Reloading
-  weaponType: Rifle
-  ammoType: Grey
-  semi: 1
-  BPM: 0
-  infiniteAmmo: 1
-  fireEffect: {fileID: 1511189355}
-  speed: 20
-  maxAmmo: 1
-  currentAmmo: 1
-  reloadTime: 5
-  reloading: 0
-  damage: 10
-  distanceRay: 100
-  maxChargeTime: 0
-  chargeTime: 0
-  maxAmmoPerTime: 0
-  ammoPerTime: 0
-  maxDamagePerTime: 0
-  damagePerTime: 0
-  ref_LineRenderer: {fileID: 0}
-  charged: 0
-  targetedEnemy: {fileID: 0}
-  amountOfBullets: 0
-  spread: 0
---- !u!114 &416348032
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1834231410565971874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c1f59ea8ac25b448aa1f1e99bdf223f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  WeaponInventory: {fileID: 0}
-  weaponContainer: {fileID: 0}
-  imageKey: {fileID: 1942989019}
-  entro: 0
 --- !u!58 &5373428540887606992
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -5017,6 +4958,48 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &8423881773346970523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1834231410565971874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf145a9200a13da479d6189bfe439b50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 0}
+  inventoryManager: {fileID: 0}
+  playerManager: {fileID: 0}
+  gUIManager: {fileID: 0}
+  spriteGun: {fileID: 0}
+  gunImage: {fileID: 0}
+  cannon: {fileID: 0}
+  isActive: 0
+  canFire: 1
+  gunAudioSource: {fileID: 0}
+  fireClip: {fileID: 8300000, guid: 3227572c1046ef9488e454122a3c402d, type: 3}
+  noAmmoClip: {fileID: 8300000, guid: 9f4842740be7f3e4aa707ddf9de3b330, type: 3}
+  reloadClip: {fileID: 8300000, guid: e799c74a9c49a004291c5b64ea259176, type: 3}
+  finishReloadClip: {fileID: 8300000, guid: ee9116af2c51f1741878254c57ee1f78, type: 3}
+  ammo: 0
+  ammoType: 
+  infiniteAmmo: 0
+  fireEffect: {fileID: 0}
+  velocityProyectile: 40
+  maxAmmo: 10
+  currentAmmo: 0
+  reloadTime: 5
+  reloading: 0
+  damage: 5
+  semi: 1
+  rateOfFire: 200
+  ROF: 0
+  proyectilePrefab: {fileID: 8972060001789191498, guid: 4931380d53b074f42b44dfa89bc05342, type: 3}
+  bulletColor: {r: 1, g: 0.4862745, b: 0, a: 1}
+  bulletTrailColor: {r: 1, g: 0.4862745, b: 0, a: 0.50980395}
 --- !u!1 &5759096661884257336
 GameObject:
   m_ObjectHideFlags: 0

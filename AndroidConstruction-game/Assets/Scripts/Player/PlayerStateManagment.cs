@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerStateManagment : MonoBehaviour
 {
-
+    /*
     PlayerBaseState currentState;
     public PlayerIdleState IdleState = new PlayerIdleState();
     public PlayerMovingState movingState = new PlayerMovingState();
@@ -29,4 +29,5 @@ public class PlayerStateManagment : MonoBehaviour
         currentState = state;
         state.EnterState(this);
     }
+    */
 }

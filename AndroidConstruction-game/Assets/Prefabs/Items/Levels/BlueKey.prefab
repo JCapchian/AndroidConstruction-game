@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6191676415566278418}
   - component: {fileID: 6191676415566278419}
-  - component: {fileID: 8864579829121238503}
   - component: {fileID: 5902196309046218008}
+  - component: {fileID: 6459161849271764753}
   m_Layer: 0
   m_Name: BlueKey
   m_TagString: Keys
@@ -84,19 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8864579829121238503
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6191676415566278416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d78fb81af8dff88449d43822f63602ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  puerta: {fileID: 0}
 --- !u!61 &5902196309046218008
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -123,3 +110,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
+--- !u!114 &6459161849271764753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6191676415566278416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f04ddd9facb0dd346ae15fdf40e6443b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyType: 2

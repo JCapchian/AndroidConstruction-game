@@ -8,10 +8,14 @@ using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
 {   
+    //Managers
+
     [Header ("Propiedades Jugador")]
     private PlayerAction playerAction;
     private Rigidbody2D rb;
+    [SerializeField]
     private Camera cameraPlayer;
+    [SerializeField]
     private Transform targetCamera;
     [SerializeField]
     private GameObject gunContainer;
@@ -20,7 +24,7 @@ public class PlayerScript : MonoBehaviour
     //public HealthBar healthBar;
     //public TMP_Text uiHealthCurrent;
     //public TMP_Text uiHealthMax;
-    
+
     [Header ("Estadistacas Jugador")]
     public int maxHealth;
     private int health;
@@ -39,12 +43,12 @@ public class PlayerScript : MonoBehaviour
     private int maxPurpleAmmo;
 
     public bool gunActive;
-    public PickUp_Gun pickUp_Gun;
+    //public PickUp_Gun pickUp_Gun;
     [SerializeField]
     private GameObject primaryGun;
     [SerializeField]
     private GameObject secondaryGun;
-    
+
     #endregion
 
     #region Objects
@@ -52,9 +56,9 @@ public class PlayerScript : MonoBehaviour
     public PickUp_ItemActive pickUp_ItemActive;
     public GameObject activeItem;
     public float haveActiveItem;
-    public GameObject[] pasiveItem;
+    public GameObject[] passiveItem;
 
-    #endregion 
+    #endregion
 
     #region UIElements
 
@@ -64,7 +68,7 @@ public class PlayerScript : MonoBehaviour
     public TMP_Text uiMax;
     public Pausa UI;
     public float transitionTime = 1f;
-    
+
     #endregion
 
     #region Animations
@@ -77,7 +81,7 @@ public class PlayerScript : MonoBehaviour
     #endregion
     
     // Awake is called when the gameobject appear
-    private void Awake() 
+    private void Awake()
     {
         // Define the Input
         playerAction = new PlayerAction();
@@ -89,13 +93,14 @@ public class PlayerScript : MonoBehaviour
         gunContainer = this.transform.GetChild(0).GetChild(0).gameObject;
 
         //UI
+        /*
         health = maxHealth;
         hB.SetMaxHealth(maxHealth);
         hB.SetHealth(health);
 
         uiCurrent.text = health.ToString();
         uiMax.text = maxHealth.ToString();   
-
+        */
         death = false;
 
     }
@@ -113,8 +118,8 @@ public class PlayerScript : MonoBehaviour
         PollInput();
 
         // Gun
-        if(playerAction.PlayerControls.SwitchGun.IsPressed())
-            Invoke("SwitchGun",10f);
+        //if(playerAction.PlayerControls.SwitchGun.IsPressed())
+            //Invoke("SwitchGun",10f);
             //SwitchGun();
         
         //Death
@@ -134,7 +139,6 @@ public class PlayerScript : MonoBehaviour
     private void OnDisable() {
         playerAction.Disable();
     }
-
 
     #region InputSystem
     
@@ -194,7 +198,7 @@ public class PlayerScript : MonoBehaviour
         //tartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex));
         yield return new WaitForSeconds(1.5f);
 
-        UI.SHowDeathScreen();
+        //UI.SHowDeathScreen();
     }
 
     IEnumerator LoadLevel(int levelIndex)
@@ -231,7 +235,7 @@ public class PlayerScript : MonoBehaviour
             secondaryGun.active = false;
 
             // Assing the "PickUp_Gun" scrip
-            pickUp_Gun = primaryGun.GetComponent<PickUp_Gun>();
+            //pickUp_Gun = primaryGun.GetComponent<PickUp_Gun>();
 
             gunActive = false;
         }
@@ -244,7 +248,7 @@ public class PlayerScript : MonoBehaviour
             secondaryGun.active = false;
 
             // Assing the "PickUp_Gun" scrip
-            pickUp_Gun = secondaryGun.GetComponent<PickUp_Gun>();
+            //pickUp_Gun = secondaryGun.GetComponent<PickUp_Gun>();
 
             gunActive = true;
         }
@@ -257,7 +261,7 @@ public class PlayerScript : MonoBehaviour
             primaryGun = newGun;
             primaryGun.transform.parent = gunContainer.transform;
             // Assing the new gun scrip
-            pickUp_Gun = primaryGun.GetComponent<PickUp_Gun>();
+            //pickUp_Gun = primaryGun.GetComponent<PickUp_Gun>();
         }
         // When the player only have one
         else if(secondaryGun == null)
@@ -266,7 +270,7 @@ public class PlayerScript : MonoBehaviour
             secondaryGun = newGun;
             secondaryGun.transform.parent = gunContainer.transform;
             // Assing the new gun scrip
-            pickUp_Gun = secondaryGun.GetComponent<PickUp_Gun>();
+            //pickUp_Gun = secondaryGun.GetComponent<PickUp_Gun>();
 
             // Turn off the primaryGun
             primaryGun.active = false;
@@ -275,18 +279,18 @@ public class PlayerScript : MonoBehaviour
         else
         {
             // Assing the the old script to dorp the gun
-            pickUp_Gun = primaryGun.GetComponent<PickUp_Gun>();
+            //pickUp_Gun = primaryGun.GetComponent<PickUp_Gun>();
 
             primaryGun.transform.rotation = newGun.transform.rotation;
             primaryGun.transform.position = newGun.transform.position;            
             primaryGun.transform.parent = null;
 
-            pickUp_Gun.Drop();
+            //pickUp_Gun.Drop();
 
             // Assing the new gun
             primaryGun = newGun;
             primaryGun.transform.parent = gunContainer.transform;
-            pickUp_Gun = primaryGun.GetComponent<PickUp_Gun>();
+            //pickUp_Gun = primaryGun.GetComponent<PickUp_Gun>();
 
             // Ensures the new gun is active
             secondaryGun.active = false;

@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 3335482711670322472}
   - component: {fileID: 3335482711670322475}
   - component: {fileID: 3335482711670322473}
+  - component: {fileID: 1337789910}
+  - component: {fileID: 1337789909}
   m_Layer: 0
   m_Name: WinZone
   m_TagString: Untagged
@@ -40,7 +42,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3335482711670322474}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -57,7 +59,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.52, y: 3.02}
+  m_Size: {x: 3, y: 3}
   m_EdgeRadius: 0
 --- !u!114 &3335482711670322473
 MonoBehaviour:
@@ -66,13 +68,48 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3335482711670322474}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7b8a7893e0c773e49877fe807147500f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   keyImage: {fileID: 3335482712355560007}
   m_levelLoader: {fileID: 0}
+  entro: 0
+--- !u!58 &1337789910
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3335482711670322474}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.98
+--- !u!114 &1337789909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3335482711670322474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc73ba9b00e26d14eb506379ff1a2214, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iconKey: {fileID: 0}
+  inventoryManager: {fileID: 0}
+  playerManager: {fileID: 0}
+  gUIManager: {fileID: 0}
+  hasKeyText: 
+  hasNoKeyText: 
 --- !u!1 &3335482712355560007
 GameObject:
   m_ObjectHideFlags: 0
@@ -84,7 +121,7 @@ GameObject:
   - component: {fileID: 3335482712355560004}
   - component: {fileID: 3335482712355560005}
   m_Layer: 0
-  m_Name: Keyboard Letters and Symbols_20
+  m_Name: IconoTecla
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

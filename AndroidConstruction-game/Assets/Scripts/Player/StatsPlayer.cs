@@ -56,7 +56,7 @@ public class StatsPlayer : MonoBehaviour
         //tartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex));
         yield return new WaitForSeconds(1.5f);
 
-        UI.SHowDeathScreen();
+        //UI.SHowDeathScreen();
     }
 
     IEnumerator LoadLevel(int levelIndex)

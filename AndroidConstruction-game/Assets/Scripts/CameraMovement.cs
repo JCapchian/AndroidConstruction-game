@@ -10,12 +10,12 @@ public class CameraMovement : MonoBehaviour
 
     private Vector3 velocity = Vector3.zero;
 
-    private void Awake() 
+    private void Awake()
     {
-        target = FindObjectOfType<PlayerScript>().gameObject.transform;  
+        target = FindObjectOfType<PlayerManager>().gameObject.transform;
     }
 
-    private void Update() 
+    private void Update()
     {
         Vector3 movePosition = target.position + offset;
         transform.position = Vector3.SmoothDamp(transform.position, movePosition, ref velocity, damping);

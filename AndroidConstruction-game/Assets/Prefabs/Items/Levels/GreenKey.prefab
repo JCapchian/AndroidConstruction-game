@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8558962326332602468}
   - component: {fileID: 8558962326332602469}
-  - component: {fileID: 2059821839651640426}
   - component: {fileID: -3237355293220443073}
+  - component: {fileID: 845317155827282454}
   m_Layer: 0
   m_Name: GreenKey
   m_TagString: Keys
@@ -84,19 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2059821839651640426
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8558962326332602466}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d78fb81af8dff88449d43822f63602ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  puerta: {fileID: 0}
 --- !u!61 &-3237355293220443073
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -123,3 +110,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
+--- !u!114 &845317155827282454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8558962326332602466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f04ddd9facb0dd346ae15fdf40e6443b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyType: 0

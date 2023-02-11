@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3379943237189052047}
   - component: {fileID: 3379943237189052048}
-  - component: {fileID: 4825700667080716798}
+  - component: {fileID: 1431109877702254542}
   - component: {fileID: -1775418012221990787}
+  - component: {fileID: 2160141046870810912}
   m_Layer: 0
   m_Name: RedKey
   m_TagString: Keys
@@ -84,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4825700667080716798
+--- !u!114 &1431109877702254542
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,10 +94,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3379943237189052049}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d78fb81af8dff88449d43822f63602ba, type: 3}
+  m_Script: {fileID: 11500000, guid: f04ddd9facb0dd346ae15fdf40e6443b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  puerta: {fileID: 0}
+  keyType: 1
 --- !u!61 &-1775418012221990787
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -123,3 +124,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
+--- !u!58 &2160141046870810912
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3379943237189052049}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.25

@@ -50,7 +50,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 4
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
@@ -97,8 +97,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54b76d1465dc5d644a4cb2179e73a028, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trail: {fileID: 0}
+  sprite: {fileID: 0}
   damageBullet: 0
-  destroyParticleEffect: {fileID: 1112901323396401491, guid: 4c480d3f6af48f840be0be826c1814fb, type: 3}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!50 &-8595263864003981702
 Rigidbody2D:
   serializedVersion: 4
@@ -137,10 +141,10 @@ TrailRenderer:
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 346268b69d6136c49b8e41da6424993c, type: 2}
+  - {fileID: 2100000, guid: 6f9ddc4b852fc3e478aa4ec5048a9cc3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

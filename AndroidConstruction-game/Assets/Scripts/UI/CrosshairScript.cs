@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class CrosshairScript : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Awake() 
+    void Awake()
     {
         Cursor.visible = false;
     }
@@ -14,7 +14,6 @@ public class CrosshairScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         transform.position = mousePosition;
     }

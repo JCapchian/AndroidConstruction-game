@@ -28,28 +28,10 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
             ""id"": ""de55eb15-4bbe-47fe-bb70-614ecd38cfe8"",
             ""actions"": [
                 {
-                    ""name"": ""Interact"",
-                    ""type"": ""Button"",
-                    ""id"": ""a06f4a65-26c4-4510-80e1-4b1af047765a"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Movement"",
-                    ""type"": ""Value"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""20a8b50c-3af1-4f05-ba5d-68737d956bed"",
                     ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""FireWeapon"",
-                    ""type"": ""Button"",
-                    ""id"": ""62ce5aa4-c0ff-4ec6-80e3-c6283ef4b493"",
-                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -62,29 +44,9 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""SwitchGun"",
-                    ""type"": ""Button"",
-                    ""id"": ""fa00dcc7-61fb-4011-8c70-96d8e6189893"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press(pressPoint=5)"",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""8df7ffc9-53bd-497b-b51c-7be8416c8016"",
-                    ""path"": ""<Keyboard>/e"",
-                    ""interactions"": ""Press"",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard and Mouse"",
-                    ""action"": ""Interact"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
                 {
                     ""name"": ""WASD Keys"",
                     ""id"": ""314226e8-293b-4a09-9f35-afb153b595ca"",
@@ -197,17 +159,6 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""445807ad-47de-4a90-9a6f-b2480d72899e"",
-                    ""path"": ""<Mouse>/press"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""FireWeapon"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""41f86975-c884-46c4-a88b-0e7671a539c4"",
                     ""path"": """",
                     ""interactions"": """",
@@ -227,15 +178,112 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                     ""action"": ""MouseMovement"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""PlayerInteractions"",
+            ""id"": ""c360ae0f-e4e9-4b92-993f-89327e1e766f"",
+            ""actions"": [
+                {
+                    ""name"": ""FireWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""c5fbb163-d118-4eab-bd8d-178b06e7d835"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""SwitchGun"",
+                    ""type"": ""Button"",
+                    ""id"": ""680a3eaf-5c6b-48ca-9df5-c4c335e1ddff"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""7fa73998-0eaa-431c-b7f7-fb14fa44475f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ReloadGun"",
+                    ""type"": ""Button"",
+                    ""id"": ""328a8b21-65aa-4d82-8a39-9616ce4f89e5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""PauseGame"",
+                    ""type"": ""Button"",
+                    ""id"": ""ced4bd21-62e0-411b-8b89-e37273e958f8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""5fe07ed2-523f-4efa-b778-c3e961e42be6"",
+                    ""path"": ""<Mouse>/press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""FireWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""1f9dc99d-8700-4226-8c90-901077d4a80f"",
+                    ""id"": ""52eb075b-31dd-4c28-a74c-37f13b4a5beb"",
                     ""path"": ""<Keyboard>/q"",
-                    ""interactions"": ""Press(pressPoint=1,behavior=2)"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard and Mouse"",
                     ""action"": ""SwitchGun"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b8528e26-ea99-4618-9b59-9e6e580103f0"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a6531875-6168-40d3-9f2f-3d6285c28062"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""ReloadGun"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fd4b3c1c-c6f0-4c9b-aed1-e0b5fce71489"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PauseGame"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -263,11 +311,15 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
 }");
         // PlayerControls
         m_PlayerControls = asset.FindActionMap("PlayerControls", throwIfNotFound: true);
-        m_PlayerControls_Interact = m_PlayerControls.FindAction("Interact", throwIfNotFound: true);
         m_PlayerControls_Movement = m_PlayerControls.FindAction("Movement", throwIfNotFound: true);
-        m_PlayerControls_FireWeapon = m_PlayerControls.FindAction("FireWeapon", throwIfNotFound: true);
         m_PlayerControls_MouseMovement = m_PlayerControls.FindAction("MouseMovement", throwIfNotFound: true);
-        m_PlayerControls_SwitchGun = m_PlayerControls.FindAction("SwitchGun", throwIfNotFound: true);
+        // PlayerInteractions
+        m_PlayerInteractions = asset.FindActionMap("PlayerInteractions", throwIfNotFound: true);
+        m_PlayerInteractions_FireWeapon = m_PlayerInteractions.FindAction("FireWeapon", throwIfNotFound: true);
+        m_PlayerInteractions_SwitchGun = m_PlayerInteractions.FindAction("SwitchGun", throwIfNotFound: true);
+        m_PlayerInteractions_Interact = m_PlayerInteractions.FindAction("Interact", throwIfNotFound: true);
+        m_PlayerInteractions_ReloadGun = m_PlayerInteractions.FindAction("ReloadGun", throwIfNotFound: true);
+        m_PlayerInteractions_PauseGame = m_PlayerInteractions.FindAction("PauseGame", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -327,20 +379,14 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
     // PlayerControls
     private readonly InputActionMap m_PlayerControls;
     private IPlayerControlsActions m_PlayerControlsActionsCallbackInterface;
-    private readonly InputAction m_PlayerControls_Interact;
     private readonly InputAction m_PlayerControls_Movement;
-    private readonly InputAction m_PlayerControls_FireWeapon;
     private readonly InputAction m_PlayerControls_MouseMovement;
-    private readonly InputAction m_PlayerControls_SwitchGun;
     public struct PlayerControlsActions
     {
         private @PlayerAction m_Wrapper;
         public PlayerControlsActions(@PlayerAction wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Interact => m_Wrapper.m_PlayerControls_Interact;
         public InputAction @Movement => m_Wrapper.m_PlayerControls_Movement;
-        public InputAction @FireWeapon => m_Wrapper.m_PlayerControls_FireWeapon;
         public InputAction @MouseMovement => m_Wrapper.m_PlayerControls_MouseMovement;
-        public InputAction @SwitchGun => m_Wrapper.m_PlayerControls_SwitchGun;
         public InputActionMap Get() { return m_Wrapper.m_PlayerControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -350,44 +396,91 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
         {
             if (m_Wrapper.m_PlayerControlsActionsCallbackInterface != null)
             {
-                @Interact.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnInteract;
-                @Interact.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnInteract;
-                @Interact.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnInteract;
                 @Movement.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMovement;
                 @Movement.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMovement;
                 @Movement.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMovement;
-                @FireWeapon.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnFireWeapon;
-                @FireWeapon.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnFireWeapon;
-                @FireWeapon.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnFireWeapon;
                 @MouseMovement.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMouseMovement;
                 @MouseMovement.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMouseMovement;
                 @MouseMovement.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMouseMovement;
-                @SwitchGun.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSwitchGun;
-                @SwitchGun.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSwitchGun;
-                @SwitchGun.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSwitchGun;
             }
             m_Wrapper.m_PlayerControlsActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Interact.started += instance.OnInteract;
-                @Interact.performed += instance.OnInteract;
-                @Interact.canceled += instance.OnInteract;
                 @Movement.started += instance.OnMovement;
                 @Movement.performed += instance.OnMovement;
                 @Movement.canceled += instance.OnMovement;
-                @FireWeapon.started += instance.OnFireWeapon;
-                @FireWeapon.performed += instance.OnFireWeapon;
-                @FireWeapon.canceled += instance.OnFireWeapon;
                 @MouseMovement.started += instance.OnMouseMovement;
                 @MouseMovement.performed += instance.OnMouseMovement;
                 @MouseMovement.canceled += instance.OnMouseMovement;
-                @SwitchGun.started += instance.OnSwitchGun;
-                @SwitchGun.performed += instance.OnSwitchGun;
-                @SwitchGun.canceled += instance.OnSwitchGun;
             }
         }
     }
     public PlayerControlsActions @PlayerControls => new PlayerControlsActions(this);
+
+    // PlayerInteractions
+    private readonly InputActionMap m_PlayerInteractions;
+    private IPlayerInteractionsActions m_PlayerInteractionsActionsCallbackInterface;
+    private readonly InputAction m_PlayerInteractions_FireWeapon;
+    private readonly InputAction m_PlayerInteractions_SwitchGun;
+    private readonly InputAction m_PlayerInteractions_Interact;
+    private readonly InputAction m_PlayerInteractions_ReloadGun;
+    private readonly InputAction m_PlayerInteractions_PauseGame;
+    public struct PlayerInteractionsActions
+    {
+        private @PlayerAction m_Wrapper;
+        public PlayerInteractionsActions(@PlayerAction wrapper) { m_Wrapper = wrapper; }
+        public InputAction @FireWeapon => m_Wrapper.m_PlayerInteractions_FireWeapon;
+        public InputAction @SwitchGun => m_Wrapper.m_PlayerInteractions_SwitchGun;
+        public InputAction @Interact => m_Wrapper.m_PlayerInteractions_Interact;
+        public InputAction @ReloadGun => m_Wrapper.m_PlayerInteractions_ReloadGun;
+        public InputAction @PauseGame => m_Wrapper.m_PlayerInteractions_PauseGame;
+        public InputActionMap Get() { return m_Wrapper.m_PlayerInteractions; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(PlayerInteractionsActions set) { return set.Get(); }
+        public void SetCallbacks(IPlayerInteractionsActions instance)
+        {
+            if (m_Wrapper.m_PlayerInteractionsActionsCallbackInterface != null)
+            {
+                @FireWeapon.started -= m_Wrapper.m_PlayerInteractionsActionsCallbackInterface.OnFireWeapon;
+                @FireWeapon.performed -= m_Wrapper.m_PlayerInteractionsActionsCallbackInterface.OnFireWeapon;
+                @FireWeapon.canceled -= m_Wrapper.m_PlayerInteractionsActionsCallbackInterface.OnFireWeapon;
+                @SwitchGun.started -= m_Wrapper.m_PlayerInteractionsActionsCallbackInterface.OnSwitchGun;
+                @SwitchGun.performed -= m_Wrapper.m_PlayerInteractionsActionsCallbackInterface.OnSwitchGun;
+                @SwitchGun.canceled -= m_Wrapper.m_PlayerInteractionsActionsCallbackInterface.OnSwitchGun;
+                @Interact.started -= m_Wrapper.m_PlayerInteractionsActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_PlayerInteractionsActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_PlayerInteractionsActionsCallbackInterface.OnInteract;
+                @ReloadGun.started -= m_Wrapper.m_PlayerInteractionsActionsCallbackInterface.OnReloadGun;
+                @ReloadGun.performed -= m_Wrapper.m_PlayerInteractionsActionsCallbackInterface.OnReloadGun;
+                @ReloadGun.canceled -= m_Wrapper.m_PlayerInteractionsActionsCallbackInterface.OnReloadGun;
+                @PauseGame.started -= m_Wrapper.m_PlayerInteractionsActionsCallbackInterface.OnPauseGame;
+                @PauseGame.performed -= m_Wrapper.m_PlayerInteractionsActionsCallbackInterface.OnPauseGame;
+                @PauseGame.canceled -= m_Wrapper.m_PlayerInteractionsActionsCallbackInterface.OnPauseGame;
+            }
+            m_Wrapper.m_PlayerInteractionsActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @FireWeapon.started += instance.OnFireWeapon;
+                @FireWeapon.performed += instance.OnFireWeapon;
+                @FireWeapon.canceled += instance.OnFireWeapon;
+                @SwitchGun.started += instance.OnSwitchGun;
+                @SwitchGun.performed += instance.OnSwitchGun;
+                @SwitchGun.canceled += instance.OnSwitchGun;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
+                @ReloadGun.started += instance.OnReloadGun;
+                @ReloadGun.performed += instance.OnReloadGun;
+                @ReloadGun.canceled += instance.OnReloadGun;
+                @PauseGame.started += instance.OnPauseGame;
+                @PauseGame.performed += instance.OnPauseGame;
+                @PauseGame.canceled += instance.OnPauseGame;
+            }
+        }
+    }
+    public PlayerInteractionsActions @PlayerInteractions => new PlayerInteractionsActions(this);
     private int m_KeyboardandMouseSchemeIndex = -1;
     public InputControlScheme KeyboardandMouseScheme
     {
@@ -399,10 +492,15 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
     }
     public interface IPlayerControlsActions
     {
-        void OnInteract(InputAction.CallbackContext context);
         void OnMovement(InputAction.CallbackContext context);
-        void OnFireWeapon(InputAction.CallbackContext context);
         void OnMouseMovement(InputAction.CallbackContext context);
+    }
+    public interface IPlayerInteractionsActions
+    {
+        void OnFireWeapon(InputAction.CallbackContext context);
         void OnSwitchGun(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
+        void OnReloadGun(InputAction.CallbackContext context);
+        void OnPauseGame(InputAction.CallbackContext context);
     }
 }

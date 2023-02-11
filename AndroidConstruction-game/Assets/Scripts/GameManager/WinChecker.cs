@@ -39,7 +39,7 @@ public class WinChecker : MonoBehaviour
         {
             Debug.Log("GANASTE MAQUINA");
             //Destroy(GameObject.Find("Player"));
-            UI.ShowWinScreen();
+            //UI.ShowWinScreen();
         }
         else
         {
