@@ -162,7 +162,7 @@ public class GUIManager : MonoBehaviour
         //CheckBoundries();
     }
 
-    private void CrosshairMovement()
+    void CrosshairMovement()
     {
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         crosshairObject.transform.position = mousePosition;
@@ -198,14 +198,14 @@ public class GUIManager : MonoBehaviour
         healthSlider.value = health;
         currentHealthText.text = "" + health;
     }
-        
+
     #endregion
 
     #region Scenes Region
 
     IEnumerator ReinicioEscena()
     {
-        //tartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex));
+        StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex));
         yield return new WaitForSeconds(1.5f);
 
         SHowDeathScreen();
@@ -295,7 +295,7 @@ public class GUIManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-        
+
     #endregion
 
     #region PickUps && Recolectables
@@ -359,10 +359,20 @@ public class GUIManager : MonoBehaviour
         tempColor.a = 1f;
         weaponIcon.color = tempColor;
 
-        // Cambio el valor de la municion
-        curretAmmo.text = "" + inventoryManager.activeGun.currentAmmo;
-        AmmoUpdateColorInventory(inventoryManager.activeGun.ammoType);
+        if(inventoryManager.activeGun.infiniteAmmo)
+        {
+            curretAmmo.enabled = false;
+            invAmmo.enabled = false;
+        }
+        else
+        {
+            curretAmmo.enabled = true;
+            invAmmo.enabled = true;
 
+            // Cambio el valor de la municion
+            curretAmmo.text = "" + inventoryManager.activeGun.currentAmmo;
+            AmmoUpdateColorInventory(inventoryManager.activeGun.ammoType);
+        }
     }
 
     private void AmmoUpdateColorInventory (string ammoType)

@@ -59,7 +59,7 @@ public class Guns : Interactable
         base.Awake();
 
         gunAudioSource = GetComponent<AudioSource>();
-        cannon = transform.GetChild(0).transform;
+        cannon = transform.GetChild(1).transform;
         //hubRef = GameObject.Find("UIArma").GetComponent<WeaponHUB>();
         fireEffect = GetComponent<ParticleSystem>();
         spriteGun = GetComponent<SpriteRenderer>();
@@ -73,7 +73,7 @@ public class Guns : Interactable
     public override void Interact(GameObject playerRef)
     {
         // Declaro una referencia del inventario
-        inventoryManager.AssignGuns(GetComponent<Guns>());
+        inventoryManager.EquipGun();
 
         gUIManager.GunUpdateGUI();
 

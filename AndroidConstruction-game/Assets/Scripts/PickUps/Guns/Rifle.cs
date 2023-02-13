@@ -91,27 +91,28 @@ public class Rifle : Guns
 
     public override void AmmoCheck()
     {
-        // Pregunto si tiene ese tipo de municion
-        if(inventoryManager.greyAmmo > 0)
+        // Pregunta si no tiene municion infinita
+        if(!infiniteAmmo)
         {
-            //Calculo la cantidad de municion a recargar
-            ammoPlus = maxAmmo - currentAmmo;
-            Debug.Log("Municion a recargar: " + ammoPlus);
-
-            //Chequeo para que no quede negativo el inventario
-            if(inventoryManager.greyAmmo < 0)
+            // Pregunto si tiene ese tipo de municion
+            if(inventoryManager.greyAmmo > 0)
             {
-                ammoPlus += inventoryManager.greyAmmo;
-                inventoryManager.greyAmmo = 0;
-            }
+                // Calculo la cantidad de municion a recargar
+                ammoPlus = maxAmmo - currentAmmo;
+                Debug.Log("Municion a recargar: " + ammoPlus);
 
-            //Arranco la corutina de recarga
-            StartCoroutine(ReloadGun(ammoPlus));
-        }
-        else
-        {
-            Debug.Log("No hay suficiente municion para: " + gameObject.name);
-            gunAudioSource.PlayOneShot(noAmmoClip);
+                // Chequeo para que no quede negativo el inventario
+                if(inventoryManager.greyAmmo < 0)
+                {
+                    ammoPlus += inventoryManager.greyAmmo;
+                    inventoryManager.greyAmmo = 0;
+                }
+
+                // Arranco la corutina de recarga
+                StartCoroutine(ReloadGun(ammoPlus));
+            }
+            else
+                gunAudioSource.PlayOneShot(noAmmoClip);
         }
     }
 }

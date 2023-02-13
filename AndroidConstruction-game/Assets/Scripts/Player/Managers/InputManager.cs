@@ -20,9 +20,12 @@ public class InputManager : MonoBehaviour
     // Action Buttons
     public bool interactButton;
     private bool fireWeaponButton;
-    private bool switchGunButton;
     private bool reloadGunButton;
     private bool pauseButton;
+
+    private bool gun1Button;
+    private bool gun2Button;
+    private bool gun3Button;
 
     #region Enable & Disable
     private void OnEnable() {
@@ -39,9 +42,6 @@ public class InputManager : MonoBehaviour
             _playerAction.PlayerInteractions.FireWeapon.performed += i => fireWeaponButton = true;
             _playerAction.PlayerInteractions.FireWeapon.canceled += i => fireWeaponButton = false;
 
-            _playerAction.PlayerInteractions.SwitchGun.performed += i => switchGunButton = true;
-            _playerAction.PlayerInteractions.SwitchGun.canceled += i => switchGunButton = false;
-
             _playerAction.PlayerInteractions.Interact.performed += i => interactButton = true;
             _playerAction.PlayerInteractions.Interact.canceled += i => interactButton = false;
 
@@ -51,6 +51,14 @@ public class InputManager : MonoBehaviour
             _playerAction.PlayerInteractions.PauseGame.performed += i => pauseButton = true;
             _playerAction.PlayerInteractions.PauseGame.canceled += i => pauseButton = false;
 
+            _playerAction.PlayerInteractions.Gun1.performed += i => gun1Button = true;
+            _playerAction.PlayerInteractions.Gun1.canceled += i => gun1Button = false;
+
+            _playerAction.PlayerInteractions.Gun2.performed += i => gun2Button = true;
+            _playerAction.PlayerInteractions.Gun2.canceled += i => gun2Button = false;
+
+            _playerAction.PlayerInteractions.Gun3.performed += i => gun3Button = true;
+            _playerAction.PlayerInteractions.Gun3.canceled += i => gun3Button = false;
         }
         _playerAction.Enable();
     }
@@ -81,7 +89,7 @@ public class InputManager : MonoBehaviour
     private void HandleActionsInput()
     {
         // Acciones de los botones
-        
+
         // Boton de disparo
         if(fireWeaponButton)
         {
@@ -99,7 +107,7 @@ public class InputManager : MonoBehaviour
             if(inventoryManager.activeGun)
                 inventoryManager.activeGun.OffGun();
         }
-        
+
 
         // Boton de Interaccion
         if(interactButton)
@@ -115,18 +123,32 @@ public class InputManager : MonoBehaviour
             interactButton = false;
         }
 
-        // Boton de Cambio de armas
-        if(switchGunButton)
+        // Botones de Cambio de armas
+        // BotonArma 1
+        if(gun1Button)
         {
-            Debug.Log("Cambio de armas");
-
-            //Accion
-            if(inventoryManager.gunsEquiped.Count > 1)
-                inventoryManager.ChangeGun();
+            if(inventoryManager.gunsEquiped[0])
+                inventoryManager.ChangeGun(0);
             else
-                Debug.Log("Tiene una sola arma");
+                Debug.Log("No Arma 1");
+        }
 
-            switchGunButton = false;
+        // BotonArma 2
+        if(gun2Button)
+        {
+            if(inventoryManager.gunsEquiped[1])
+                inventoryManager.ChangeGun(1);
+            else
+                Debug.Log("No Arma 2");
+        }
+
+        // BotonArma 3
+        if(gun3Button)
+        {
+            if(inventoryManager.gunsEquiped[2])
+                inventoryManager.ChangeGun(2);
+            else
+                Debug.Log("No Arma 3");
         }
 
         // Boton de Recarga de armas
@@ -137,7 +159,7 @@ public class InputManager : MonoBehaviour
                 inventoryManager.activeGun.AmmoCheck();
             else
                 Debug.Log("No tiene arma equipada");
-            
+
             reloadGunButton = false;
         }
 

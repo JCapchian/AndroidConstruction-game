@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 4469014401778524204}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1942989021
 SpriteRenderer:
@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 1511189355}
   - component: {fileID: 1511189356}
   - component: {fileID: 8423881773346970523}
+  - component: {fileID: 8233649353574695815}
   m_Layer: 0
   m_Name: Pistol
   m_TagString: Weapon
@@ -114,8 +115,8 @@ Transform:
   m_LocalPosition: {x: -0.848, y: 0.28, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1354090420722948845}
   - {fileID: 1942989020}
+  - {fileID: 1354090420722948845}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4970,7 +4971,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf145a9200a13da479d6189bfe439b50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Icon: {fileID: 0}
+  iconKey: {fileID: 0}
   inventoryManager: {fileID: 0}
   playerManager: {fileID: 0}
   gUIManager: {fileID: 0}
@@ -4980,13 +4981,14 @@ MonoBehaviour:
   isActive: 0
   canFire: 1
   gunAudioSource: {fileID: 0}
+  interactClip: {fileID: 8300000, guid: bd08d88f24e684f4fbbaa17a18f98a8d, type: 3}
   fireClip: {fileID: 8300000, guid: 3227572c1046ef9488e454122a3c402d, type: 3}
   noAmmoClip: {fileID: 8300000, guid: 9f4842740be7f3e4aa707ddf9de3b330, type: 3}
   reloadClip: {fileID: 8300000, guid: e799c74a9c49a004291c5b64ea259176, type: 3}
   finishReloadClip: {fileID: 8300000, guid: ee9116af2c51f1741878254c57ee1f78, type: 3}
   ammo: 0
   ammoType: 
-  infiniteAmmo: 0
+  infiniteAmmo: 1
   fireEffect: {fileID: 0}
   velocityProyectile: 40
   maxAmmo: 10
@@ -5000,6 +5002,102 @@ MonoBehaviour:
   proyectilePrefab: {fileID: 8972060001789191498, guid: 4931380d53b074f42b44dfa89bc05342, type: 3}
   bulletColor: {r: 1, g: 0.4862745, b: 0, a: 1}
   bulletTrailColor: {r: 1, g: 0.4862745, b: 0, a: 0.50980395}
+--- !u!82 &8233649353574695815
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1834231410565971874}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &5759096661884257336
 GameObject:
   m_ObjectHideFlags: 0
@@ -5024,9 +5122,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5759096661884257336}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.336, y: 0.176, z: 0}
+  m_LocalPosition: {x: 0.336, y: 0.143, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4469014401778524204}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

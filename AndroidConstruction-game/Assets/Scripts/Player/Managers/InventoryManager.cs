@@ -24,10 +24,19 @@ public class InventoryManager : MonoBehaviour
     [SerializeField]
     private int maxPurpleAmmo;
 
+    [Header ("Armas invetario")]
     public int gunsAmount;
-    bool hasTwoGuns = false;
+    [SerializeField]
     public List<Guns> gunsEquiped;
     public Guns activeGun;
+    [SerializeField]
+    int  activeGunPosition;
+    [SerializeField]
+    Transform dropPoint;
+    [SerializeField]
+    float changeGunCooldown;
+    [SerializeField]
+    bool canChangeGun;
 
     [Header ("Recolectables")]
     // LLaves
@@ -56,6 +65,7 @@ public class InventoryManager : MonoBehaviour
     AudioClip completeObjetiveClip;
     [SerializeField]
     AudioClip pickUpClip;
+
     private void Awake()
     {
         gUIManager = FindObjectOfType<GUIManager>();
@@ -68,90 +78,80 @@ public class InventoryManager : MonoBehaviour
         greenAmmo = maxGreenAmmo;
         purpleAmmo = maxPurpleAmmo;
 
-        for (var i = 0; i < gunsAmount; i++)
+        for (var i = 0; i < 3; i++)
             gunsEquiped.Add(null);
 
+        dropPoint = transform.GetChild(2).transform;
         Debug.Log(gunsEquiped.Count);
     }
 
     #region GunsRegions
 
-    /// <summary>Asigna la pocision del arma</summary>
-    public void AssignGuns(Guns gunPicked)
-    {
-        //Pregunta si tiene primaria
-        if(!gunsEquiped[0])
-        {
-            EquipGun(gunPicked, 0);
-            return;
-        }
-        //Pregunto si tiene secundaria
-        if(!gunsEquiped[1])
-        {
-            EquipGun(gunPicked, 1);
-            TurnGun(0, false);
-            hasTwoGuns = true;
-            return;
-        }
-    }
-
     /// <summary>Equipa el arma</summary>
-    private void EquipGun(Guns gunPicked, int gunPosition)
+    public void EquipGun()
     {
-        // La declaro en la lista
-        gunsEquiped[gunPosition] = gunPicked;
-
-        // Cambio su orientacion
-        gunsEquiped[gunPosition].transform.rotation = gunContainer.transform.rotation;
-        gunsEquiped[gunPosition].transform.position = gunContainer.transform.position;
-
-        // Activo el objeto
-        gunsEquiped[gunPosition].gameObject.SetActive(true);
-
-        // La asigno como padre
-        gunsEquiped[gunPosition].transform.parent = gunContainer.transform;
-
-        // La guardo como arma activa
-        activeGun = gunsEquiped[gunPosition];
-    }
-
-    /// <summary>Cambia entre las armas de jugador</summary>
-    public void ChangeGun()
-    {
-        // Pregunto la cantidad de armas equipadas
-        if(hasTwoGuns)
+        if(closeItem.GetComponent<Guns>())
         {
-            // Pregunto si tiene el arma equipada
-            if(activeGun == gunsEquiped[0])
-            {
-                activeGun = gunsEquiped[1];
-                TurnGun(0, false);
-                TurnGun(1, true);
+            var gunPicked = closeItem.GetComponent<Guns>();
+            TurnGun(false);
+            // La declaro en la lista
+            gunsEquiped[gunsAmount] = gunPicked;
 
-                gUIManager.GunUpdateGUI();
-            }
-            else
-            {
-                activeGun = gunsEquiped[0];
-                TurnGun(1,false);
-                TurnGun(0, true);
+            // Cambio su orientacion
+            gunsEquiped[gunsAmount].transform.rotation = gunContainer.transform.rotation;
+            gunsEquiped[gunsAmount].transform.position = gunContainer.transform.position;
 
-                gUIManager.GunUpdateGUI();
-            }
+            // La asigno como padre
+            gunsEquiped[gunsAmount].transform.parent = gunContainer.transform;
+
+            // La guardo como arma activa
+            activeGun = gunsEquiped[gunsAmount];
+
+            // Activo el objeto
+            TurnGun(true);
+            //activeGunPosition = gunsAmount;
+
+            gunsAmount ++;
         }
         else
-            Debug.Log("Solo tienes un arma");
+            Debug.Log("Eso no es un arma");
     }
 
     /// <summary>Prende y apaga las armas</summary>
-    void TurnGun(int gunPosition, bool op)
+    void TurnGun(bool state)
     {
-        if(op)
-            gunsEquiped[gunPosition].gameObject.SetActive(true);
-        else
-            gunsEquiped[gunPosition].gameObject.SetActive(false);
+        if(activeGun)
+           activeGun.gameObject.SetActive(state);
     }
-    
+
+    /// <summary>Cambia entre las armas de jugador</summary>
+    public void ChangeGun(int gunPosition)
+    {
+        if(canChangeGun)
+        {
+            canChangeGun = false;
+
+            TurnGun(false);
+
+            activeGun = gunsEquiped[gunPosition];
+            activeGunPosition = gunPosition;
+
+            TurnGun(true);
+
+            gUIManager.GunUpdateGUI();
+
+            StartCoroutine(ChangeGunTimer());
+        }
+        else
+            Debug.Log("Cant Change guns");
+    }
+
+    IEnumerator ChangeGunTimer()
+    {
+        yield return new WaitForSeconds(changeGunCooldown);
+        canChangeGun = true;
+    }
+
     /// <summary>Se llama para restar municion del inventario</summary>
     public void LeesAmmo(string ammoType, int ammoQuantity)
     {
@@ -162,24 +162,18 @@ public class InventoryManager : MonoBehaviour
                 greyAmmo -= ammoQuantity;
                 // Actualizo interfaz
                 gUIManager.InvAmmoUpdateGUI(greyAmmo);
-                Debug.Log("Uso: " + ammoQuantity + " de municion gris");
                 break;
             case "greenAmmo":
                 greenAmmo -= ammoQuantity;
                 // Actualizo interfaz
                 gUIManager.InvAmmoUpdateGUI(greenAmmo);
-                Debug.Log("Uso: " + ammoQuantity + " de municion verde");
                 break;
             case "purpleAmmo":
                 purpleAmmo -= ammoQuantity;
                 // Actualizo interfaz
                 gUIManager.InvAmmoUpdateGUI(purpleAmmo);
-                Debug.Log("Uso: " + ammoQuantity + " de municion purpura");
                 break;
         }
-        // Actualizo interfaz
-        //gUIManager.InvAmmoUpdateGUI(ammoQuantity);
-        
     }
 
     #endregion

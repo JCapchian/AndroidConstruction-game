@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3335482711670322472}
   - component: {fileID: 3335482711670322475}
-  - component: {fileID: 3335482711670322473}
   - component: {fileID: 1337789910}
   - component: {fileID: 1337789909}
   m_Layer: 0
@@ -61,21 +60,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3, y: 3}
   m_EdgeRadius: 0
---- !u!114 &3335482711670322473
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3335482711670322474}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b8a7893e0c773e49877fe807147500f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyImage: {fileID: 3335482712355560007}
-  m_levelLoader: {fileID: 0}
-  entro: 0
 --- !u!58 &1337789910
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -108,8 +92,8 @@ MonoBehaviour:
   inventoryManager: {fileID: 0}
   playerManager: {fileID: 0}
   gUIManager: {fileID: 0}
-  hasKeyText: 
-  hasNoKeyText: 
+  hasKeyText: Tienes todas las llaves, debo continuar
+  hasNoKeyText: Aun te faltan llaves
 --- !u!1 &3335482712355560007
 GameObject:
   m_ObjectHideFlags: 0

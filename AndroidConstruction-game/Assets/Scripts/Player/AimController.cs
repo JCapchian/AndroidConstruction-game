@@ -6,22 +6,28 @@ using UnityEngine;
 public class AimController : MonoBehaviour
 {
     [SerializeField]
+    InventoryManager inventoryManager;
+    [SerializeField]
     SpriteRenderer spritePlayer;
     [SerializeField]
     Transform targetCamera;
     [SerializeField]
     Camera mainCamera;
-
     private void Awake()
     {
         spritePlayer = GetComponentInParent<SpriteRenderer>();
+        inventoryManager = GetComponentInParent<InventoryManager>();
 
         mainCamera = Camera.main;
         targetCamera = this.transform;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void HandleAllFunctions()
+    {
+        HandleAiming();
+    }
+
+    void HandleAiming()
     {
         //Obtain the position of the mouse in the "world"
         Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
@@ -36,9 +42,16 @@ public class AimController : MonoBehaviour
         var z = this.transform.rotation.z;
 
         if((z > 0.5))
-            spritePlayer.flipX = true;
+            FlipSprites(true);
         else
-            spritePlayer.flipX = false;
+            FlipSprites(false);
     }
 
+    private void FlipSprites(bool state)
+    {
+        spritePlayer.flipX = state;
+
+        if(inventoryManager.activeGun)
+            inventoryManager.activeGun.spriteGun.flipY = state;
+    }
 }

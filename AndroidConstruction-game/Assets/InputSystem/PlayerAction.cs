@@ -195,9 +195,27 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""SwitchGun"",
+                    ""name"": ""Gun1"",
                     ""type"": ""Button"",
-                    ""id"": ""680a3eaf-5c6b-48ca-9df5-c4c335e1ddff"",
+                    ""id"": ""997329ac-7a19-4f01-a6f1-eadc506d005f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Gun2"",
+                    ""type"": ""Button"",
+                    ""id"": ""8a25d570-0bf0-46cb-b16b-b20165889d7e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Gun3"",
+                    ""type"": ""Button"",
+                    ""id"": ""af555939-6957-4eb8-89a2-d88b0124368d"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -245,17 +263,6 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""52eb075b-31dd-4c28-a74c-37f13b4a5beb"",
-                    ""path"": ""<Keyboard>/q"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard and Mouse"",
-                    ""action"": ""SwitchGun"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""b8528e26-ea99-4618-9b59-9e6e580103f0"",
                     ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
@@ -284,6 +291,39 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""PauseGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8f401373-6e84-401b-bdb7-c7fecc4bd096"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Gun1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0d75296a-d87b-41b5-97bb-1f631d20d3a5"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Gun2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""84046620-8bdc-4a88-9239-08d06e3d73ff"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Gun3"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -316,7 +356,9 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
         // PlayerInteractions
         m_PlayerInteractions = asset.FindActionMap("PlayerInteractions", throwIfNotFound: true);
         m_PlayerInteractions_FireWeapon = m_PlayerInteractions.FindAction("FireWeapon", throwIfNotFound: true);
-        m_PlayerInteractions_SwitchGun = m_PlayerInteractions.FindAction("SwitchGun", throwIfNotFound: true);
+        m_PlayerInteractions_Gun1 = m_PlayerInteractions.FindAction("Gun1", throwIfNotFound: true);
+        m_PlayerInteractions_Gun2 = m_PlayerInteractions.FindAction("Gun2", throwIfNotFound: true);
+        m_PlayerInteractions_Gun3 = m_PlayerInteractions.FindAction("Gun3", throwIfNotFound: true);
         m_PlayerInteractions_Interact = m_PlayerInteractions.FindAction("Interact", throwIfNotFound: true);
         m_PlayerInteractions_ReloadGun = m_PlayerInteractions.FindAction("ReloadGun", throwIfNotFound: true);
         m_PlayerInteractions_PauseGame = m_PlayerInteractions.FindAction("PauseGame", throwIfNotFound: true);
@@ -421,7 +463,9 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_PlayerInteractions;
     private IPlayerInteractionsActions m_PlayerInteractionsActionsCallbackInterface;
     private readonly InputAction m_PlayerInteractions_FireWeapon;
-    private readonly InputAction m_PlayerInteractions_SwitchGun;
+    private readonly InputAction m_PlayerInteractions_Gun1;
+    private readonly InputAction m_PlayerInteractions_Gun2;
+    private readonly InputAction m_PlayerInteractions_Gun3;
     private readonly InputAction m_PlayerInteractions_Interact;
     private readonly InputAction m_PlayerInteractions_ReloadGun;
     private readonly InputAction m_PlayerInteractions_PauseGame;
@@ -430,7 +474,9 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
         private @PlayerAction m_Wrapper;
         public PlayerInteractionsActions(@PlayerAction wrapper) { m_Wrapper = wrapper; }
         public InputAction @FireWeapon => m_Wrapper.m_PlayerInteractions_FireWeapon;
-        public InputAction @SwitchGun => m_Wrapper.m_PlayerInteractions_SwitchGun;
+        public InputAction @Gun1 => m_Wrapper.m_PlayerInteractions_Gun1;
+        public InputAction @Gun2 => m_Wrapper.m_PlayerInteractions_Gun2;
+        public InputAction @Gun3 => m_Wrapper.m_PlayerInteractions_Gun3;
         public InputAction @Interact => m_Wrapper.m_PlayerInteractions_Interact;
         public InputAction @ReloadGun => m_Wrapper.m_PlayerInteractions_ReloadGun;
         public InputAction @PauseGame => m_Wrapper.m_PlayerInteractions_PauseGame;
@@ -446,9 +492,15 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                 @FireWeapon.started -= m_Wrapper.m_PlayerInteractionsActionsCallbackInterface.OnFireWeapon;
                 @FireWeapon.performed -= m_Wrapper.m_PlayerInteractionsActionsCallbackInterface.OnFireWeapon;
                 @FireWeapon.canceled -= m_Wrapper.m_PlayerInteractionsActionsCallbackInterface.OnFireWeapon;
-                @SwitchGun.started -= m_Wrapper.m_PlayerInteractionsActionsCallbackInterface.OnSwitchGun;
-                @SwitchGun.performed -= m_Wrapper.m_PlayerInteractionsActionsCallbackInterface.OnSwitchGun;
-                @SwitchGun.canceled -= m_Wrapper.m_PlayerInteractionsActionsCallbackInterface.OnSwitchGun;
+                @Gun1.started -= m_Wrapper.m_PlayerInteractionsActionsCallbackInterface.OnGun1;
+                @Gun1.performed -= m_Wrapper.m_PlayerInteractionsActionsCallbackInterface.OnGun1;
+                @Gun1.canceled -= m_Wrapper.m_PlayerInteractionsActionsCallbackInterface.OnGun1;
+                @Gun2.started -= m_Wrapper.m_PlayerInteractionsActionsCallbackInterface.OnGun2;
+                @Gun2.performed -= m_Wrapper.m_PlayerInteractionsActionsCallbackInterface.OnGun2;
+                @Gun2.canceled -= m_Wrapper.m_PlayerInteractionsActionsCallbackInterface.OnGun2;
+                @Gun3.started -= m_Wrapper.m_PlayerInteractionsActionsCallbackInterface.OnGun3;
+                @Gun3.performed -= m_Wrapper.m_PlayerInteractionsActionsCallbackInterface.OnGun3;
+                @Gun3.canceled -= m_Wrapper.m_PlayerInteractionsActionsCallbackInterface.OnGun3;
                 @Interact.started -= m_Wrapper.m_PlayerInteractionsActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_PlayerInteractionsActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_PlayerInteractionsActionsCallbackInterface.OnInteract;
@@ -465,9 +517,15 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                 @FireWeapon.started += instance.OnFireWeapon;
                 @FireWeapon.performed += instance.OnFireWeapon;
                 @FireWeapon.canceled += instance.OnFireWeapon;
-                @SwitchGun.started += instance.OnSwitchGun;
-                @SwitchGun.performed += instance.OnSwitchGun;
-                @SwitchGun.canceled += instance.OnSwitchGun;
+                @Gun1.started += instance.OnGun1;
+                @Gun1.performed += instance.OnGun1;
+                @Gun1.canceled += instance.OnGun1;
+                @Gun2.started += instance.OnGun2;
+                @Gun2.performed += instance.OnGun2;
+                @Gun2.canceled += instance.OnGun2;
+                @Gun3.started += instance.OnGun3;
+                @Gun3.performed += instance.OnGun3;
+                @Gun3.canceled += instance.OnGun3;
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
@@ -498,7 +556,9 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
     public interface IPlayerInteractionsActions
     {
         void OnFireWeapon(InputAction.CallbackContext context);
-        void OnSwitchGun(InputAction.CallbackContext context);
+        void OnGun1(InputAction.CallbackContext context);
+        void OnGun2(InputAction.CallbackContext context);
+        void OnGun3(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnReloadGun(InputAction.CallbackContext context);
         void OnPauseGame(InputAction.CallbackContext context);

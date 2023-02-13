@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraMovement : MonoBehaviour
+public class CameraManager : MonoBehaviour
 {
     public Transform target;
     public Vector3 offset;
@@ -15,10 +15,14 @@ public class CameraMovement : MonoBehaviour
         target = FindObjectOfType<PlayerManager>().gameObject.transform;
     }
 
-    private void Update()
+    public void HandleCamera()
+    {
+        CameraMovement();
+    }
+
+    private void CameraMovement()
     {
         Vector3 movePosition = target.position + offset;
         transform.position = Vector3.SmoothDamp(transform.position, movePosition, ref velocity, damping);
     }
-
 }

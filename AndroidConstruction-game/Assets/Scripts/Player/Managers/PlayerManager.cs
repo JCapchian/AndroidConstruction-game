@@ -13,7 +13,10 @@ public class PlayerManager : MonoBehaviour
     public GUIManager gUIManager;
     [SerializeField]
     AnimationManager animationManager;
+    [SerializeField]
     StatsManager statsManager;
+    [SerializeField]
+    CameraManager cameraManager;
 
     // Controllers
     [SerializeField]
@@ -23,9 +26,11 @@ public class PlayerManager : MonoBehaviour
         // Declaro los managers
         inputManager = GetComponent<InputManager>();
         movementeManager = GetComponent<MovementeManager>();
-        gUIManager = FindObjectOfType<GUIManager>();
         animationManager = GetComponent<AnimationManager>();
         statsManager = GetComponent<StatsManager>();
+
+        gUIManager = FindObjectOfType<GUIManager>();
+        cameraManager = FindObjectOfType<CameraManager>();
 
         // Declaro los controllers
         aimController = GetComponentInChildren<AimController>();
@@ -37,6 +42,8 @@ public class PlayerManager : MonoBehaviour
 
     private void FixedUpdate() {
         movementeManager.HandleMovement();
+        aimController.HandleAllFunctions();
+        cameraManager.HandleCamera();
     }
 
     private void LateUpdate() {

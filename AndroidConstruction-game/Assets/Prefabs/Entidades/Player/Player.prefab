@@ -134,6 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09d7e67397d4876489804ba12a174976, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryManager: {fileID: 0}
   spritePlayer: {fileID: 0}
   targetCamera: {fileID: 0}
   mainCamera: {fileID: 0}
@@ -401,6 +402,8 @@ MonoBehaviour:
   movementeManager: {fileID: 0}
   gUIManager: {fileID: 0}
   animationManager: {fileID: 0}
+  statsManager: {fileID: 0}
+  aimController: {fileID: 0}
 --- !u!114 &4527259185183981151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -449,19 +452,29 @@ MonoBehaviour:
   greyAmmo: 0
   greenAmmo: 0
   purpleAmmo: 0
-  maxGreyAmmo: 100
+  maxGreyAmmo: 0
   maxGreenAmmo: 0
   maxPurpleAmmo: 0
-  gunsAmount: 2
+  gunsAmount: 0
   gunsEquiped: []
   activeGun: {fileID: 0}
+  activeGunPosition: 0
+  dropPoint: {fileID: 0}
+  changeGunCooldown: 0.5
+  canChangeGun: 1
   greenKey: 0
   redKey: 0
   blueKey: 0
+  hasAllKeys: 0
+  circuitsCont: 0
+  scrapCount: 0
   pickUp_ItemActive: {fileID: 0}
   activeItem: {fileID: 0}
   haveActiveItem: 0
   pasiveItem: []
+  audioSource: {fileID: 0}
+  completeObjetiveClip: {fileID: 8300000, guid: 489294cd2cd29a345a3713f16de51fd3, type: 3}
+  pickUpClip: {fileID: 0}
 --- !u!114 &8611836036870807304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -474,9 +487,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57b95fd937f6b78479951a098641fafe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gUIManager: {fileID: 0}
+  playerManager: {fileID: 0}
   audioSource: {fileID: 0}
   damageClip: {fileID: 8300000, guid: 32ec6844024a2784a8afe90a97d00910, type: 3}
+  hitCollider: {fileID: 0}
   maxHealth: 100
   health: 0
 --- !u!114 &3608176379896556730

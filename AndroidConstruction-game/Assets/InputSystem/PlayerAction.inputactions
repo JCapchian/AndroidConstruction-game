@@ -173,9 +173,27 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "SwitchGun",
+                    "name": "Gun1",
                     "type": "Button",
-                    "id": "680a3eaf-5c6b-48ca-9df5-c4c335e1ddff",
+                    "id": "997329ac-7a19-4f01-a6f1-eadc506d005f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Gun2",
+                    "type": "Button",
+                    "id": "8a25d570-0bf0-46cb-b16b-b20165889d7e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Gun3",
+                    "type": "Button",
+                    "id": "af555939-6957-4eb8-89a2-d88b0124368d",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -223,17 +241,6 @@
                 },
                 {
                     "name": "",
-                    "id": "52eb075b-31dd-4c28-a74c-37f13b4a5beb",
-                    "path": "<Keyboard>/q",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard and Mouse",
-                    "action": "SwitchGun",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "b8528e26-ea99-4618-9b59-9e6e580103f0",
                     "path": "<Keyboard>/e",
                     "interactions": "",
@@ -262,6 +269,39 @@
                     "processors": "",
                     "groups": "",
                     "action": "PauseGame",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8f401373-6e84-401b-bdb7-c7fecc4bd096",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Gun1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0d75296a-d87b-41b5-97bb-1f631d20d3a5",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Gun2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "84046620-8bdc-4a88-9239-08d06e3d73ff",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Gun3",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

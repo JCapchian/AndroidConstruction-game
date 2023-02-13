@@ -269,7 +269,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5798642484581588936, guid: ab5ccc402cecf60419638e5f4e25743c, type: 3}
       propertyPath: m_RootOrder
-      value: 20
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 5798642484581588936, guid: ab5ccc402cecf60419638e5f4e25743c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1312,7 +1312,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &336007277
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18971,7 +18971,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &685939778
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19394,7 +19394,6 @@ MonoBehaviour:
   curretAmmo: {fileID: 969720265}
   invAmmo: {fileID: 1051577638}
   weaponIcon: {fileID: 0}
-  invPlayer: {fileID: 1551797202}
 --- !u!1 &760908782
 GameObject:
   m_ObjectHideFlags: 0
@@ -19544,7 +19543,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &761440929
 RectTransform:
   m_ObjectHideFlags: 0
@@ -44772,61 +44771,61 @@ MonoBehaviour:
   sounds:
   - name: Theme
     clip: {fileID: 8300000, guid: cfb2760385347264da4e358f673790ea, type: 3}
-    volumen: 25
+    volume: 0
     pitch: 1
     loop: 1
     source: {fileID: 0}
   - name: Disparo1
     clip: {fileID: 8300000, guid: 22f00c9c2c87ab942a2d26da65219789, type: 3}
-    volumen: 20
+    volume: 0
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: DisparoEnemigo1
     clip: {fileID: 8300000, guid: fc61c8e729b5d914590933120445b6d8, type: 3}
-    volumen: 20
+    volume: 0
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: PickUpItem
     clip: {fileID: 8300000, guid: aa04a2cd5a247bf4b916ec3c83e968a7, type: 3}
-    volumen: 20
+    volume: 0
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Reloading
     clip: {fileID: 8300000, guid: e799c74a9c49a004291c5b64ea259176, type: 3}
-    volumen: 20
+    volume: 0
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Reload
     clip: {fileID: 8300000, guid: ee9116af2c51f1741878254c57ee1f78, type: 3}
-    volumen: 20
+    volume: 0
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Curar
     clip: {fileID: 8300000, guid: 75ffdc79c2a60e241a3407d42620b473, type: 3}
-    volumen: 20
+    volume: 0
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: PickUpAmmo
     clip: {fileID: 8300000, guid: 0f76edbecc977474c839c275a3c5f43c, type: 3}
-    volumen: 20
+    volume: 0
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: AtaqueArea
     clip: {fileID: 8300000, guid: 7bea8171c30a93040bc3c7726a7c803e, type: 3}
-    volumen: 40
+    volume: 0
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: KeyPick
     clip: {fileID: 8300000, guid: b7d5c8f1f23600d4288eda7d60e8258b, type: 3}
-    volumen: 40
+    volume: 0
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -45478,16 +45477,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e37cf21356b4eb347999e8291bce62cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cont: {fileID: 1973032596}
-  pauseScreen: {fileID: 761440928}
-  deathScreen: {fileID: 336007276}
-  contEnemiesDEATH: {fileID: 760908784}
-  contChatarraDEATH: {fileID: 1614868700}
-  contComponentesDEATH: {fileID: 126231344}
-  winScreen: {fileID: 685939777}
-  contEnemiesWIN: {fileID: 2128753056}
-  contChatarraWIN: {fileID: 901897359}
-  contComponentesWIN: {fileID: 742285743}
 --- !u!1 &1182002075
 GameObject:
   m_ObjectHideFlags: 0
@@ -46246,28 +46235,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1551797202 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2367051610653661203, guid: 8cafcab70ba03244b9daee5b8b320684, type: 3}
-  m_PrefabInstance: {fileID: 3608176379896556728}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1551797198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6847bf29ae9793b4aa1ed31d6ce29507, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1551797203 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 222558134, guid: 8cafcab70ba03244b9daee5b8b320684, type: 3}
-  m_PrefabInstance: {fileID: 3608176379896556728}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1551797198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d2f082a2fbe1e144a69bb591bdcf923, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1551797207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46280,7 +46247,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09d7e67397d4876489804ba12a174976, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 24386281}
+  inventoryManager: {fileID: 0}
+  spritePlayer: {fileID: 0}
+  targetCamera: {fileID: 0}
   mainCamera: {fileID: 519420031}
 --- !u!1 &1555889984
 GameObject:
@@ -48517,11 +48486,11 @@ PrefabInstance:
     - target: {fileID: 7543649535957416722, guid: 8cafcab70ba03244b9daee5b8b320684, type: 3}
       propertyPath: movement
       value: 
-      objectReference: {fileID: 1551797203}
+      objectReference: {fileID: 0}
     - target: {fileID: 7543649535957416722, guid: 8cafcab70ba03244b9daee5b8b320684, type: 3}
       propertyPath: inventory
       value: 
-      objectReference: {fileID: 1551797202}
+      objectReference: {fileID: 0}
     - target: {fileID: 7543649535957416722, guid: 8cafcab70ba03244b9daee5b8b320684, type: 3}
       propertyPath: uiCurrent
       value: 
@@ -48647,7 +48616,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8672551290011242753, guid: 76a5b622b7faf104fa4c18fe59f1e777, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8672551290011242758, guid: 76a5b622b7faf104fa4c18fe59f1e777, type: 3}
       propertyPath: m_RootOrder
