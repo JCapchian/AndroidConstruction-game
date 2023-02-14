@@ -5,104 +5,85 @@ using UnityEngine.Events;
 
 public class Spawner : MonoBehaviour
 {
-    public List<GameObject> enemiesList = new List<GameObject>();
+    private Collider2D triggerZone;
+    public bool active = false;
+
+    [SerializeField]
+    List<GameObject> enemiesList = new List<GameObject>();
+    [SerializeField]
+    GameObject meleeEnemy;
+    [SerializeField]
+    GameObject turretEnemy;
+
+    [SerializeField]
+    Transform lootDrop;
+    [SerializeField]
+    GameObject finalDrop;
+    [SerializeField]
+    int wavesAmount;
+    public float timeBetweenWaves;
+    public float timeBetweenSpawn;
+
     public Transform[] spawnsPoints;
     public GameObject[] doorsPoints;
-    public GameObject loot;
-    public Transform lootDrop;
-    public GameObject zoneEnemy;
-    public GameObject turretEnemy;
-    public BoxCollider2D triggerZone;
-    public Vector2 maxCollider;
-    public bool active = false;
-    public bool first = false;
-    public int quantitySpawns;
-    public float timeSpawn;
-    public float maxTimeSpawn;
 
-    
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        //timeSpawn = maxTimeSpawn;
+        triggerZone = GetComponent<Collider2D>();
     }
 
-    private void OnTriggerStay2D(Collider2D other) 
+    private void OnTriggerEnter2D(Collider2D other)
     {
-
-    }
-
-    private void OnTriggerEnter2D(Collider2D other) 
-    {
-        if(active == false && other.gameObject.tag == "Player")
+        if(active == false && other.GetComponent<PlayerManager>())
         {
             active = true;
-            triggerZone.size = new Vector2(20.25f,20.73f);
             Debug.Log("Entro");
-        } 
-
-        if(other.gameObject.tag == "Enemy")
-        {
-            enemiesList.Add(other.gameObject);
-            Debug.Log("NuevoEnemigo");
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D other) {
-        if(other.gameObject.tag == "Enemy")
-        {
-            enemiesList.Remove(other.gameObject);
-            Debug.Log("FueraEnemigo");
-        }
-    }
-    
-    // Update is called once per frame
-    void Update()
-    {
-        if(active == true)
             ActivateSpawner();
-        
-        if(quantitySpawns == 0 && enemiesList.Count == 0)
-            CloseOpenDoors(false);
+            CloseOpenDoors(true);
+            Destroy(triggerZone);
+        }
     }
 
     private void ActivateSpawner()
     {
-        // Active the spawner the inmediatly the first time
-        if(first == false)
+        // Spawn waves
+        if(wavesAmount > 0)
         {
-            timeSpawn = maxTimeSpawn;
+            StartCoroutine(StartWave());
+            timeBetweenWaves = timeBetweenSpawn;
             // Spawn Doors
             CloseOpenDoors(true);
-
-            first = true;
         }
 
-        if(timeSpawn > 0)
+        if(timeBetweenWaves > 0)
         {
-            timeSpawn -= Time.deltaTime;
-            Debug.Log("Cargando...");   
+            timeBetweenWaves -= Time.deltaTime;
+            Debug.Log("Cargando...");
         }
         else
         {
-            SpawnEnemies();
-            
-            timeSpawn = maxTimeSpawn;
+            StartWave();
+            timeBetweenWaves = timeBetweenSpawn;
         }
     }
 
+
+
     private void SpawnLoot()
     {
-        Instantiate(loot, lootDrop.transform.position, lootDrop.transform.rotation);
+        Instantiate(finalDrop, lootDrop.transform.position, lootDrop.transform.rotation);
     }
 
-    private void SpawnEnemies()
+    private IEnumerator StartWave()
     {
+        yield return new WaitForSeconds(0.4f);
+        
         for (var i = 0; i < spawnsPoints.Length; i++)
         {
-            if(quantitySpawns == 1)
+            if(wavesAmount > 1)
             {
-                Instantiate(turretEnemy, spawnsPoints[i].transform.position, spawnsPoints[i].transform.rotation);
+                var newEnemies = Instantiate(turretEnemy, spawnsPoints[i].transform.position, spawnsPoints[i].transform.rotation);
+                enemiesList.Add(newEnemies);
                 Debug.Log("Ultimo Enemigo");
                 spawnsPoints[i] = null;
                 CloseOpenDoors(false);
@@ -111,21 +92,19 @@ public class Spawner : MonoBehaviour
             }
             else
             {
-                Instantiate(zoneEnemy, spawnsPoints[i].transform.position, spawnsPoints[i].transform.rotation);
-                Debug.Log("Enemigo numero: " + quantitySpawns);
+                var newEnemies = Instantiate(meleeEnemy, spawnsPoints[i].transform.position, spawnsPoints[i].transform.rotation);
+                enemiesList.Add(newEnemies);
+                Debug.Log("Enemigo numero: " + wavesAmount);
             }
         }
-        quantitySpawns -= 1;
+        wavesAmount -= 1;
     }
 
-    private void CloseOpenDoors(bool onOff)
+    private void CloseOpenDoors(bool state)
     {
         for (var i = 0; i < doorsPoints.Length; i++)
         {
-            if(onOff == true)
-                doorsPoints[i].active = true;
-            else
-                doorsPoints[i].active = false;
+            doorsPoints[i].SetActive(state);
         }
     }
 }

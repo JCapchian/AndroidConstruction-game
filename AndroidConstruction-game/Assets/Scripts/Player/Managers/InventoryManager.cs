@@ -18,11 +18,11 @@ public class InventoryManager : MonoBehaviour
     public int purpleAmmo;
 
     [SerializeField]
-    private int maxGreyAmmo;
+    private int lastGreyAmmo;
     [SerializeField]
-    private int maxGreenAmmo;
+    private int lastGreenAmmo;
     [SerializeField]
-    private int maxPurpleAmmo;
+    private int lastPurpleAmmo;
 
     [Header ("Armas invetario")]
     public int gunsAmount;
@@ -49,10 +49,9 @@ public class InventoryManager : MonoBehaviour
     [SerializeReference]
     public bool hasAllKeys;
 
-    public int circuitsCont;
-    public int scrapCount;
+    public int circuitsAmount;
+    public int scrapAmount;
 
-    public PickUp_ItemActive pickUp_ItemActive;
     public GameObject activeItem;
     public float haveActiveItem;
     public GameObject[] pasiveItem;
@@ -73,10 +72,6 @@ public class InventoryManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
 
         gunContainer = transform.GetChild(0).GetChild(0).gameObject;
-
-        greyAmmo = maxGreyAmmo;
-        greenAmmo = maxGreenAmmo;
-        purpleAmmo = maxPurpleAmmo;
 
         for (var i = 0; i < 3; i++)
             gunsEquiped.Add(null);
@@ -234,9 +229,6 @@ public class InventoryManager : MonoBehaviour
             audioSource.PlayOneShot(completeObjetiveClip);
         }
     }
-
-    
-
     #endregion
 
     #region Interaction region
@@ -264,10 +256,24 @@ public class InventoryManager : MonoBehaviour
         hasAllKeys = false;
     }
 
-    public void ClearCircuitsMetal()
+    public void ClearCircuitsScrap()
     {
-        
+        circuitsAmount = 0;
+        scrapAmount = 0;
     }
 
+    void SaveInventory()
+    {
+        lastGreenAmmo = greenAmmo;
+        lastGreyAmmo = greyAmmo;
+        lastPurpleAmmo = purpleAmmo;
+    }
+
+    void LoadInventory()
+    {
+        greenAmmo = lastGreenAmmo;
+        greyAmmo = lastGreyAmmo;
+        purpleAmmo = lastPurpleAmmo;
+    }
     #endregion
 }

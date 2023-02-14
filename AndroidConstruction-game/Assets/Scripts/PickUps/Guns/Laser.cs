@@ -24,7 +24,7 @@ public class Laser : Guns
     Transform ref_TransformGun;
     [SerializeField]
     private bool charged = false;
-    public EnemyStatsController targetedEnemy;
+    //public EnemyStatsController targetedEnemy;
 
     protected override void Awake()
     {
@@ -72,15 +72,15 @@ public class Laser : Guns
                 //Debug.Log(_hit.collider.gameObject.name);
                 if(_hit.collider.gameObject.tag == "Enemy")
                 {
-                    targetedEnemy = _hit.collider.gameObject.GetComponent<EnemyStatsController>();
+                    //targetedEnemy = _hit.collider.gameObject.GetComponent<EnemyStatsController>();
                     //Debug.Log("Impactando a: " + targetedEnemy);
 
                     if(damagePerTime > 0)
                         damagePerTime -= Time.deltaTime;
                     else
                     {
-                        targetedEnemy.TakeDamage(damage);
-                        Debug.Log(targetedEnemy.name + "sufrio= " + damage + " de daño");
+                        //targetedEnemy.TakeDamage(damage);
+                        //Debug.Log(targetedEnemy.name + "sufrio= " + damage + " de daño");
                         damagePerTime = maxDamagePerTime;
                     }
                 }
@@ -89,7 +89,7 @@ public class Laser : Guns
             {
                 //Use the default distance variable to draw the laser using the 'distanceRay'
                 Draw2DRay(cannon.position, cannon.transform.right * distanceRay);
-                targetedEnemy = null;
+                //targetedEnemy = null;
                 Debug.Log("El laser no esta impactando con nada");
             }
         }
@@ -110,20 +110,20 @@ public class Laser : Guns
         if(infiniteAmmo == false)
         {
             if(ammoPerTime > 0)
-                ammoPerTime -= Time.deltaTime;   
+                ammoPerTime -= Time.deltaTime;
             else
             {
                 currentAmmo -= 1;
                 //hubRef.AmmoUpdate();
                 ammoPerTime = maxAmmoPerTime;
             }
-        }   
+        }
     }
 
     /// <summary>Apaga el laser</summary>
     void TurnOffLaser()
     {
-        targetedEnemy = null;
+        //targetedEnemy = null;
         lineRenderer.enabled = false;
         charged = false;
     }
@@ -152,7 +152,7 @@ public class Laser : Guns
             //Calculo la cantidad de municion a recargar
             ammoPlus = maxAmmo - currentAmmo;
             Debug.Log("Municion a recargar: " + ammoPlus);
-            
+
             //Chequeo para que no quede negativo el inventario
             if(inventoryManager.purpleAmmo < 0)
             {

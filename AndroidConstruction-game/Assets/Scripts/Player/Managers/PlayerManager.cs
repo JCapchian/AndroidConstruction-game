@@ -34,6 +34,8 @@ public class PlayerManager : MonoBehaviour
 
         // Declaro los controllers
         aimController = GetComponentInChildren<AimController>();
+
+        DontDestroyOnLoad(this.gameObject);
     }
 
     private void Update() {

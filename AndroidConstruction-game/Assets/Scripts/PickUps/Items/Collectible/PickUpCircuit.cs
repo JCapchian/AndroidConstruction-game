@@ -6,7 +6,7 @@ public class PickUpCircuit : PickUp
 {
     protected override void PickUpFunction()
     {
-        inventoryManager.circuitsCont++;
+        inventoryManager.circuitsAmount++;
 
         base.PickUpFunction();
     }

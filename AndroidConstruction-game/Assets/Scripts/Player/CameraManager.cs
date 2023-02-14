@@ -13,6 +13,8 @@ public class CameraManager : MonoBehaviour
     private void Awake()
     {
         target = FindObjectOfType<PlayerManager>().gameObject.transform;
+
+        DontDestroyOnLoad(this.gameObject);
     }
 
     public void HandleCamera()

@@ -42,4 +42,9 @@ public class MovementeManager : MonoBehaviour
 
         //animationmanager.MoveAnimation(movementOffset);
     }
+
+    public void StopMovement()
+    {
+        rb2D.velocity = Vector2.zero;
+    }
 }

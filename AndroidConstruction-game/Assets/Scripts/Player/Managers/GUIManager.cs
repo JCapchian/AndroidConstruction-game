@@ -142,10 +142,12 @@ public class GUIManager : MonoBehaviour
         crosshairObject = transform.GetChild(7).gameObject;
         Cursor.visible = false;
 
-        TurnResumeOrPause(false);
+        //TurnResumeOrPause(false);
 
         // Text
         textAviso = transform.GetChild(8).GetComponent<TMP_Text>();
+
+        DontDestroyOnLoad(this.gameObject);
 
         enemigosElimindos = 0;
         chatarraRecoletada = 0;

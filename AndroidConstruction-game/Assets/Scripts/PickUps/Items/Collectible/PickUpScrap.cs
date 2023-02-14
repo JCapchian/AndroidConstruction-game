@@ -6,7 +6,7 @@ public class PickUpScrap : PickUp
 {
     protected override void PickUpFunction()
     {
-        inventoryManager.scrapCount += 1;
+        inventoryManager.scrapAmount += 1;
 
         base.PickUpFunction();
     }

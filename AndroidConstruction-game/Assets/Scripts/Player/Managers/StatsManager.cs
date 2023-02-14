@@ -8,6 +8,8 @@ public class StatsManager : MonoBehaviour
     [SerializeField]
     PlayerManager playerManager;
     GUIManager gUIManager;
+    MovementeManager movementeManager;
+
     SpriteRenderer sprite;
     AnimationManager animationManager;
 
@@ -29,6 +31,7 @@ public class StatsManager : MonoBehaviour
         // Declaro los managers
         playerManager = GetComponent<PlayerManager>();
         animationManager = GetComponent<AnimationManager>();
+        movementeManager = GetComponent<MovementeManager>();
 
         // Declaro los componentes
         gUIManager = FindObjectOfType<GUIManager>();
@@ -96,6 +99,8 @@ public class StatsManager : MonoBehaviour
     {
         // Apago los managers del jugador
         playerManager.TurnStateManagersPlayer(false);
+
+        movementeManager.StopMovement();
 
         // Ejecuto la animacion de muerte
         animationManager.DeathAnimation();

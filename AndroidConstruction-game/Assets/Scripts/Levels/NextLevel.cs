@@ -11,7 +11,7 @@ public class NextLevel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -26,22 +26,20 @@ public class NextLevel : MonoBehaviour
         */
     }
 
-    private void OnTriggerEnter2D(Collider2D other) 
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.gameObject.tag == "Player")
         {
-            keyImage.active = true;
+            keyImage.SetActive(true);
             entro = true;
         }
-        
     }
 
-    private void OnTriggerExit2D(Collider2D other) 
+    private void OnTriggerExit2D(Collider2D other)
     {
         if(other.gameObject.tag == "Player")
         {
-            keyImage.active = false;
-            
+            keyImage.SetActive(false);
         }
     }
 
