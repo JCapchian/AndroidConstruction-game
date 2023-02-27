@@ -26,8 +26,10 @@ public class EnemyBullet : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
+        Debug.Log(other.gameObject);
         if(other.gameObject.GetComponent<StatsManager>())
         {
+            //Debug.Log(other);
             var player = other.gameObject.GetComponent<StatsManager>();
             player.TakeDamage(bulletDamage);
         }

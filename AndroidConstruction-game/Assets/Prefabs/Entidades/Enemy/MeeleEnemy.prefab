@@ -64,8 +64,8 @@ MonoBehaviour:
   player: {fileID: 0}
   playerInRange: 0
   canAttack: 1
-  damage: 10
-  coolDown: 2
+  damage: 15
+  coolDown: 1
 --- !u!1 &3333953943982165444
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,6 +287,7 @@ MonoBehaviour:
   meleeAnimations: {fileID: 0}
   rb2D: {fileID: 0}
   speed: 2
+  distanceToPlayer: 0
   isIdle: 0
   isMoving: 0
 --- !u!114 &5666908003734572954
@@ -302,9 +303,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyAnimations: {fileID: 0}
+  spawnerRef: {fileID: 0}
   sprite: {fileID: 0}
   c2D: {fileID: 0}
-  dropPrefab: {fileID: 7208091681751390123, guid: 4544813b29d2771419653a9993d08290, type: 3}
+  dropsPrefabs:
+  - {fileID: 7208091681751390123, guid: 4544813b29d2771419653a9993d08290, type: 3}
+  - {fileID: 1982236066126366712, guid: d57b58c4a61140f4b885a47f2f2d1a62, type: 3}
+  - {fileID: 1072680877236962235, guid: 8d993df7c94189e4a8907424595c2e14, type: 3}
   health: 40
 --- !u!1 &8443068281967873487
 GameObject:

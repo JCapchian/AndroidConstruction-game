@@ -11,20 +11,11 @@ public class Guns : Interactable
     [Header("Componentes")]
     [SerializeField]
     public Sprite gunImage;
+    public Collider2D c2D;
+    [SerializeField]
+    protected ParticleSystem fireEffect;
     [SerializeField]
     protected Transform cannon;
-
-    [Header("Propiedades")]
-    [SerializeField]
-    protected bool isActive;
-    [SerializeField]
-    protected bool canFire = true;
-    enum AmmoTypes
-    {
-        greyAmmo,
-        greenAmmo,
-        purpleAmmo
-    }
 
     [Header("Clips de Audio")]
     [SerializeField]
@@ -40,19 +31,34 @@ public class Guns : Interactable
     [SerializeField]
     protected AudioClip finishReloadClip;
 
+    [Header("Propiedades")]
+    [SerializeField]
+    protected bool isActive;
+    [SerializeField]
+    protected bool canFire = true;
+    enum AmmoTypes
+    {
+        greyAmmo,
+        greenAmmo,
+        purpleAmmo
+    }
+
     [Header("Estadisticas Generales")]
     [SerializeField]
     AmmoTypes ammo;
     public string ammoType;
     protected int ammoPlus;
     public bool infiniteAmmo;
-    public ParticleSystem fireEffect;
+
     public float velocityProyectile = 20f;
     public int maxAmmo;
     public int currentAmmo;
     public float reloadTime;
     public bool reloading = false;
-    public int damage;
+    [SerializeField]
+    protected int damage;
+    [SerializeField]
+    protected float bulletLifeTime;
 
     protected override void Awake()
     {
@@ -60,6 +66,7 @@ public class Guns : Interactable
 
         gunAudioSource = GetComponent<AudioSource>();
         cannon = transform.GetChild(1).transform;
+        c2D = GetComponent<Collider2D>();
         //hubRef = GameObject.Find("UIArma").GetComponent<WeaponHUB>();
         fireEffect = GetComponent<ParticleSystem>();
         spriteGun = GetComponent<SpriteRenderer>();

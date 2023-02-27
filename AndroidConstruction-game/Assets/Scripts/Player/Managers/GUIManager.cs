@@ -7,6 +7,9 @@ using TMPro;
 
 public class GUIManager : MonoBehaviour
 {
+    GameObject playerPackage;
+    public bool PrimerNivel;
+
     // Managers
     GameObject playerRef;
     StatsManager statsManager;
@@ -23,8 +26,14 @@ public class GUIManager : MonoBehaviour
 
     [Header ("Stats Armas")]
     #region statsArmas
-    public TMP_Text curretAmmo;
-    public TMP_Text invAmmo;
+    [SerializeField]
+    private TMP_Text currentAmmo;
+    [SerializeField]
+    private TMP_Text ammoSeparator;
+    [SerializeField]
+    private TMP_Text invAmmo;
+    [SerializeField]
+    private TMP_Text infiniteAmmo;
     public Image weaponIcon;
     #endregion
 
@@ -40,48 +49,41 @@ public class GUIManager : MonoBehaviour
     [SerializeField]
     private Image blueKeyImage;
 
-
-    [Header ("Informacion de la partida")]
-    #region infoPartida
+    [Header ("Contadores")]
     public int enemigosElimindos = 0;
-    public int chatarraRecoletada = 0;
-    public int componentesRecoletados = 0;
 
     [Header ("Textos")]
     private TMP_Text textAviso;
-    public TMP_Text textChatarra;
-    public TMP_Text textComponente;
-    public TMP_Text contEnemiesDEATH;
-    public TMP_Text contChatarraDEATH;
-    public TMP_Text contComponentesDEATH;
-    public TMP_Text contEnemiesWIN;
-    public TMP_Text contChatarraWIN;
-    public TMP_Text contComponentesWIN;
-
-    #endregion
 
     [Header ("Efectos")]
-    #region efectos
     [SerializeField]
     private float transitionTime = 1f;
     [SerializeField]
     private Animator transition;
     [SerializeField]
     private GameObject crosshairObject;
-    #endregion
 
     [Header ("Pantallas")]
+
     #region pantallas
     [SerializeField]
-    private Vector2 screenBounds;
     public bool isPaused;
-    public GameObject pauseScreen;
-    public GameObject deathScreen;
-    public GameObject winScreen;
+    [SerializeField]
+    private GameObject pauseScreen;
+    [SerializeField]
+    private GameObject deathScreen;
+    [SerializeField]
+    private GameObject winScreen;
+
     #endregion
 
 
-    private void Awake() {
+    private void Awake()
+    {
+        playerPackage = transform.parent.gameObject;
+
+        var actualScene = SceneManager.GetActiveScene();
+
         // Busco y guardo al jugador como referencia
         playerRef = FindObjectOfType<PlayerManager>().gameObject;
 
@@ -90,8 +92,13 @@ public class GUIManager : MonoBehaviour
         statsManager = playerRef.GetComponent<StatsManager>();
         inventoryManager = playerRef.GetComponent<InventoryManager>();
 
-        // Asignos los componentes que voy a utilizar
-        screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width,Screen.height , 0));
+        // Pantallas
+        pauseScreen = transform.GetChild(4).gameObject;
+        deathScreen = transform.GetChild(2).gameObject;
+        winScreen = transform.GetChild(3).gameObject;
+
+        deathScreen.SetActive(false);
+        winScreen.SetActive(false);
 
         // Vida
         healthSlider = transform.GetChild(0).GetComponent<Slider>();
@@ -101,27 +108,17 @@ public class GUIManager : MonoBehaviour
         SetMaxHealth(statsManager.maxHealth);
 
         // Armas
-        curretAmmo = transform.GetChild(2).GetChild(2).GetComponent<TMP_Text>();
-        invAmmo = transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>();
-        weaponIcon = transform.GetChild(2).GetChild(3).GetComponent<Image>();
+        invAmmo = transform.GetChild(1).GetChild(0).GetComponent<TMP_Text>();
+        ammoSeparator = transform.GetChild(1).GetChild(1).GetComponent<TMP_Text>();
+        currentAmmo = transform.GetChild(1).GetChild(2).GetComponent<TMP_Text>();
+        weaponIcon = transform.GetChild(1).GetChild(3).GetComponent<Image>();
+        infiniteAmmo = transform.GetChild(1).GetChild(4).GetComponent<TMP_Text>();
 
         var tempColor = weaponIcon.color;
         tempColor.a = 0f;
         weaponIcon.color = tempColor;
 
-        // Recoletables
-        textChatarra = transform.GetChild(1).GetChild(0).GetChild(1).GetComponent<TMP_Text>();
-        textComponente = transform.GetChild(1).GetChild(1).GetChild(1).GetComponent<TMP_Text>();
-
-        contEnemiesDEATH = transform.GetChild(3).GetChild(2).GetChild(1).GetComponent<TMP_Text>();
-        contChatarraDEATH = transform.GetChild(3).GetChild(4).GetChild(2).GetComponent<TMP_Text>();
-        contComponentesDEATH = transform.GetChild(3).GetChild(3).GetChild(2).GetComponent<TMP_Text>();
-
-        contEnemiesWIN = transform.GetChild(4).GetChild(2).GetChild(1).GetComponent<TMP_Text>();
-        contChatarraWIN = transform.GetChild(4).GetChild(4).GetChild(2).GetComponent<TMP_Text>();
-        contComponentesWIN = transform.GetChild(4).GetChild(3).GetChild(2).GetComponent<TMP_Text>();
-
-        KeysGUI = transform.GetChild(6).gameObject;
+        KeysGUI = transform.GetChild(5).gameObject;
         redKeyImage = KeysGUI.transform.GetChild(0).GetComponent<Image>();
         greenKeyImage = KeysGUI.transform.GetChild(1).GetComponent<Image>();
         blueKeyImage = KeysGUI.transform.GetChild(2).GetComponent<Image>();
@@ -130,30 +127,17 @@ public class GUIManager : MonoBehaviour
         greenKeyImage.rectTransform.anchoredPosition = new Vector2(-250, -50);
         blueKeyImage.rectTransform.anchoredPosition = new Vector2(-100, -50);
 
-        // Pantallas
-        pauseScreen = transform.GetChild(5).gameObject;
-        deathScreen = transform.GetChild(3).gameObject;
-        winScreen = transform.GetChild(4).gameObject;
-
-        deathScreen.SetActive(false);
-        winScreen.SetActive(false);
-
         // Effects & Detail
-        crosshairObject = transform.GetChild(7).gameObject;
+        crosshairObject = transform.GetChild(6).gameObject;
         Cursor.visible = false;
 
-        //TurnResumeOrPause(false);
-
         // Text
-        textAviso = transform.GetChild(8).GetComponent<TMP_Text>();
+        textAviso = transform.GetChild(7).GetComponent<TMP_Text>();
 
-        DontDestroyOnLoad(this.gameObject);
+        this.transform.parent = null;
 
-        enemigosElimindos = 0;
-        chatarraRecoletada = 0;
-        componentesRecoletados = 0;
-
-
+        if(SceneManager.GetActiveScene().buildIndex != 2)
+            DontDestroyOnLoad(this.gameObject);
     }
 
     #region Effects & Detail Region
@@ -169,18 +153,7 @@ public class GUIManager : MonoBehaviour
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         crosshairObject.transform.position = mousePosition;
     }
-/*
-    private void CheckBoundries()
-    {
-        screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width,Screen.height , Camera.main.transform.position.z));
 
-        Vector3 viewPos =  crosshairObject.transform.position;
-        viewPos.x = Mathf.Clamp(viewPos.x, screenBounds.x, screenBounds.x * -1);
-        viewPos.y = Mathf.Clamp(viewPos.y, screenBounds.y, screenBounds.y * -1);
-        
-        crosshairObject.transform.position = viewPos;
-    }
-    */
     #endregion
 
     #region PlayerStats Region
@@ -236,10 +209,6 @@ public class GUIManager : MonoBehaviour
         deathScreen.gameObject.SetActive(true);
 
         Time.timeScale = 0;
-
-        contEnemiesDEATH.text = "X" + enemigosElimindos.ToString();
-        contChatarraDEATH.text = "X" + chatarraRecoletada.ToString();
-        contComponentesDEATH.text = "X" + componentesRecoletados.ToString();
     }
 
     public void ShowWinScreen()
@@ -247,10 +216,12 @@ public class GUIManager : MonoBehaviour
         winScreen.gameObject.SetActive(true);
 
         Time.timeScale = 0;
+    }
 
-        contEnemiesDEATH.text = "X" + enemigosElimindos.ToString();
-        contChatarraDEATH.text = "X" + chatarraRecoletada.ToString();
-        contComponentesDEATH.text = "X" + componentesRecoletados.ToString();
+    private void TurnScreens(bool state)
+    {
+        winScreen.gameObject.SetActive(state);
+        deathScreen.gameObject.SetActive(state);
     }
 
     #endregion
@@ -290,12 +261,21 @@ public class GUIManager : MonoBehaviour
     public void QuitGame()
     {
         Time.timeScale = 1;
+        TurnScreens(false);
+        
+        playerManager.DestroyPlayer();
+
         SceneManager.LoadScene(0);
     }
 
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        TurnScreens(false);
+
+        Time.timeScale = 1;
+
+        playerManager.ResetPlayer();
     }
 
     #endregion
@@ -306,44 +286,27 @@ public class GUIManager : MonoBehaviour
     {
         var targetPosition = new Vector2(0, 100);
 
-        switch (keyName)
+        switch(keyName)
         {
             case "greenKey":
-                Debug.Log("LLave verde GUI");
                 greenKeyImage.rectTransform.anchoredPosition = Vector2.Lerp(greenKeyImage.rectTransform.anchoredPosition, new Vector2(-250,100), showKeyTime);
-                // Funcion del hud
                 break;
             case "blueKey":
-                Debug.Log("LLave blue GUI");
                 blueKeyImage.rectTransform.anchoredPosition = Vector2.Lerp(blueKeyImage.rectTransform.position, new Vector2(-100,100), showKeyTime);
-                // Funcion del hud
                 break;
             case "redKey":
-                Debug.Log("LLave verde GUI");
                 redKeyImage.rectTransform.anchoredPosition = Vector2.Lerp( redKeyImage.rectTransform.anchoredPosition, new Vector2(-400,100), showKeyTime);
-                // Funcion del hud
                 break;
         }
     }
 
-    /// <summary>Se llama cada vez que se recoge un collecionable</summary>
-    public void PickUpRecolectable(string Type)
+    public void ResetKeys()
     {
-        switch (Type)
-        {
-            case "Chatarra":
-                chatarraRecoletada += 1;
-                Debug.Log("+1 Chatarra");
-                textChatarra.text = ("X" + chatarraRecoletada.ToString());
-                Debug.Log("Chatarra Obtenida= " + chatarraRecoletada);
-                break;
-            case "Componente":
-                componentesRecoletados += 1;
-                Debug.Log("+1 Componentes");
-                textComponente.text = ("X" + componentesRecoletados.ToString());
-                Debug.Log("Componente Obtenida= " + chatarraRecoletada);
-                break;
-        }
+        var targetPosition = new Vector2(0, -100);
+
+        greenKeyImage.rectTransform.anchoredPosition = targetPosition;
+        blueKeyImage.rectTransform.anchoredPosition = targetPosition;
+        redKeyImage.rectTransform.anchoredPosition = targetPosition;
     }
 
     #endregion
@@ -363,16 +326,24 @@ public class GUIManager : MonoBehaviour
 
         if(inventoryManager.activeGun.infiniteAmmo)
         {
-            curretAmmo.enabled = false;
-            invAmmo.enabled = false;
+            Debug.Log("infinite Ammo");
+
+            currentAmmo.gameObject.SetActive(false);
+            invAmmo.gameObject.SetActive(false);
+            ammoSeparator.gameObject.SetActive(false);
+            infiniteAmmo.gameObject.SetActive(true);
         }
         else
         {
-            curretAmmo.enabled = true;
-            invAmmo.enabled = true;
+            Debug.Log("No infinite Ammo");
+
+            currentAmmo.gameObject.SetActive(true);
+            invAmmo.gameObject.SetActive(true);
+            ammoSeparator.gameObject.SetActive(true);
+            infiniteAmmo.gameObject.SetActive(false);
 
             // Cambio el valor de la municion
-            curretAmmo.text = "" + inventoryManager.activeGun.currentAmmo;
+            currentAmmo.text = "" + inventoryManager.activeGun.currentAmmo;
             AmmoUpdateColorInventory(inventoryManager.activeGun.ammoType);
         }
     }
@@ -398,12 +369,27 @@ public class GUIManager : MonoBehaviour
 
     public void CurrentAmmoUpdateGUI(int ammoQuantity)
     {
-        curretAmmo.text = "" + ammoQuantity;
+        currentAmmo.text = "" + ammoQuantity;
     }
 
     public void InvAmmoUpdateGUI(int ammoQuantity)
     {
-        invAmmo.text = "" + ammoQuantity;
+        if(inventoryManager.activeGun)
+        {
+            switch (inventoryManager.activeGun.ammoType)
+            {
+                case "greyAmmo":
+                    invAmmo.text = "" + inventoryManager.greyAmmo;
+                    break;
+                case "greenAmmo":
+                    invAmmo.text = "" + inventoryManager.greenAmmo;
+                    break;
+                case "purpleAmmo":
+                    invAmmo.text = "" + inventoryManager.purpleAmmo;
+                    break;
+            }
+        }
+        //invAmmo.text = "" + ammoQuantity;
     }
 
     #endregion
@@ -422,16 +408,4 @@ public class GUIManager : MonoBehaviour
     }
 
     #endregion
-
-    #region Counts Region
-
-    /// <summary>Se llama cada vez que se elemina un enemigo</summary>
-    public void EnemeyCountUpdate()
-    {
-        enemigosElimindos += 1;
-        Debug.Log("Enemigos eliminados= " + enemigosElimindos);
-    }
-
-    #endregion
-
 }

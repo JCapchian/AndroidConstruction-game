@@ -22,13 +22,15 @@ public class AmmoPack : PickUp
 
     protected override void Awake()
     {
+        base.Awake();
+
         // Defino el tipo de municion
         switch (ammoTypes)
         {
-            case AmmoTypes.greyAmmo: 
+            case AmmoTypes.greyAmmo:
                 ammoType = "greyAmmo";
                 break;
-            case AmmoTypes.greenAmmo: 
+            case AmmoTypes.greenAmmo:
                 ammoType = "greenAmmo";
                 break;
             case AmmoTypes.purpleAmmo:
@@ -40,11 +42,11 @@ public class AmmoPack : PickUp
         ammoQuantity = Random.Range(minAmmo,maxAmmo);
     }
 
-    protected override void PickUpFunction() 
+    protected override void PickUpFunction()
     {
         // Guardo la municion en el inventario
         inventoryManager.PickUpAmmo(ammoType,ammoQuantity);
-        
+
         base.PickUpFunction();
     }
 }

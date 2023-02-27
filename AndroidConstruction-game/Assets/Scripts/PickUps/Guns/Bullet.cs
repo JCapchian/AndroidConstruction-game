@@ -12,29 +12,39 @@ public class Bullet : MonoBehaviour
     [SerializeField]
     int damageBullet;
     [SerializeField]
+    float lifeTime;
+    [SerializeField]
     LayerMask layerMask;
 
     private void Awake()
     {
         trail = GetComponent<TrailRenderer>();
         sprite = GetComponent<SpriteRenderer>();
-
-        Destroy(gameObject, 2f);
+        Debug.Log(layerMask.value);
     }
 
     private void OnCollisionEnter2D (Collision2D other)
     {
-        Destroy(gameObject);
+        Debug.Log(other.gameObject.layer);
+        if(other.gameObject.layer == 7 || other.gameObject.layer == 10)
+            Destroy(gameObject);
     }
 
-    public void SetStatsEffects(int weaponDamage, Color trailColor, Color bulletColor)
+    private void OnTriggerEnter2D(Collider2D other) {
+    //Destroy(gameObject);
+    }
+
+    public void SetStatsEffects(int weaponDamage, float gunLifeTime, Color trailColor, Color bulletColor)
     {
         damageBullet = weaponDamage;
+        lifeTime = gunLifeTime;
 
         trail.startColor = trailColor;
         trail.endColor = trailColor;
 
         sprite.color = bulletColor;
+
+        Destroy(gameObject, lifeTime);
     }
 
     public int GetDamage()

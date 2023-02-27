@@ -106,7 +106,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4746015908255343356}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.644, y: -0.052, z: 0}
+  m_LocalPosition: {x: 0.644, y: 0.035, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4746015909031403638}
@@ -5103,27 +5103,29 @@ MonoBehaviour:
   gUIManager: {fileID: 0}
   spriteGun: {fileID: 0}
   gunImage: {fileID: 0}
+  c2D: {fileID: 0}
+  fireEffect: {fileID: 0}
   cannon: {fileID: 0}
-  isActive: 0
-  canFire: 1
   gunAudioSource: {fileID: 0}
   interactClip: {fileID: 8300000, guid: bd08d88f24e684f4fbbaa17a18f98a8d, type: 3}
   fireClip: {fileID: 8300000, guid: d0ec3a28e3c81be49868bce822b95313, type: 3}
   noAmmoClip: {fileID: 8300000, guid: 9f4842740be7f3e4aa707ddf9de3b330, type: 3}
   reloadClip: {fileID: 8300000, guid: 64250be803a1c9646bf157da4578405f, type: 3}
   finishReloadClip: {fileID: 8300000, guid: ee9116af2c51f1741878254c57ee1f78, type: 3}
+  isActive: 0
+  canFire: 1
   ammo: 1
   ammoType: 
   infiniteAmmo: 0
-  fireEffect: {fileID: 0}
   velocityProyectile: 40
   maxAmmo: 8
   currentAmmo: 0
-  reloadTime: 0
+  reloadTime: 2
   reloading: 0
-  damage: 0
-  amountOfPellets: 4
+  damage: 20
+  bulletLifeTime: 0.5
+  amountOfPellets: 3
   spread: 0.2
-  proyectilePrefab: {fileID: 8972060001789191498, guid: c082a52024e98a24a8fb01315e285435, type: 3}
+  proyectilePrefab: {fileID: 8972060001789191498, guid: 4931380d53b074f42b44dfa89bc05342, type: 3}
   bulletColor: {r: 1, g: 0.8509494, b: 0, a: 1}
   bulletTrailColor: {r: 1, g: 0.62514454, b: 0, a: 0.50980395}

@@ -4977,29 +4977,31 @@ MonoBehaviour:
   gUIManager: {fileID: 0}
   spriteGun: {fileID: 0}
   gunImage: {fileID: 0}
+  c2D: {fileID: 0}
+  fireEffect: {fileID: 0}
   cannon: {fileID: 0}
-  isActive: 0
-  canFire: 1
   gunAudioSource: {fileID: 0}
   interactClip: {fileID: 8300000, guid: bd08d88f24e684f4fbbaa17a18f98a8d, type: 3}
   fireClip: {fileID: 8300000, guid: 3227572c1046ef9488e454122a3c402d, type: 3}
   noAmmoClip: {fileID: 8300000, guid: 9f4842740be7f3e4aa707ddf9de3b330, type: 3}
   reloadClip: {fileID: 8300000, guid: e799c74a9c49a004291c5b64ea259176, type: 3}
   finishReloadClip: {fileID: 8300000, guid: ee9116af2c51f1741878254c57ee1f78, type: 3}
+  isActive: 0
+  canFire: 1
   ammo: 0
   ammoType: 
   infiniteAmmo: 1
-  fireEffect: {fileID: 0}
-  velocityProyectile: 40
-  maxAmmo: 10
-  currentAmmo: 0
-  reloadTime: 5
+  velocityProyectile: 30
+  maxAmmo: 0
+  currentAmmo: 1
+  reloadTime: 0
   reloading: 0
   damage: 5
+  bulletLifeTime: 1
   semi: 1
   rateOfFire: 200
   ROF: 0
-  proyectilePrefab: {fileID: 8972060001789191498, guid: 4931380d53b074f42b44dfa89bc05342, type: 3}
+  proyectilePrefab: {fileID: 270611757210488890, guid: 8ab02da1f96e9e04a90440be8ce692b0, type: 3}
   bulletColor: {r: 1, g: 0.4862745, b: 0, a: 1}
   bulletTrailColor: {r: 1, g: 0.4862745, b: 0, a: 0.50980395}
 --- !u!82 &8233649353574695815

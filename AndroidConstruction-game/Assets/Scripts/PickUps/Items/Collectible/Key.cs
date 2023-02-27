@@ -18,6 +18,8 @@ public class Key : PickUp
 
     protected override void Awake()
     {
+        base.Awake();
+
         // Defino el tipo de llave
         switch (keyType)
         {

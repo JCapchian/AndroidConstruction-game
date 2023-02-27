@@ -32,4 +32,11 @@ public class TurretAnimations : EnemyAnimations
             sprite.flipX = false;
 
     }
+
+    public override void DeathAnimation()
+    {
+        base.DeathAnimation();
+
+        Destroy(enemyStats.gameObject, 0.5f);
+    }
 }

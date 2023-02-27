@@ -38,4 +38,13 @@ public class MeleeAnimations : EnemyAnimations
         else
             enemyAnimator.SetBool("isMoving" ,false);
     }
+
+    public override void DeathAnimation()
+    {
+        base.DeathAnimation();
+
+        meleeMovement.StopMovement();
+
+        Destroy(enemyStats.gameObject, 0.5f);
+    }
 }

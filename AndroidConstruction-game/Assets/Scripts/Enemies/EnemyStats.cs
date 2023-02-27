@@ -6,21 +6,30 @@ public class EnemyStats : MonoBehaviour
 {
     [SerializeField]
     EnemyAnimations enemyAnimations;
+    EnemyAbilities enemyAbilities;
+    [SerializeField]
+    Spawner spawnerRef;
     [SerializeField]
     SpriteRenderer sprite;
     [SerializeField]
     Collider2D c2D;
     [SerializeField]
-    protected GameObject dropPrefab;
+    protected GameObject[] dropsPrefabs;
     [SerializeField]
     int health;
 
     private void Awake()
     {
         enemyAnimations = GetComponentInChildren<EnemyAnimations>();
+        enemyAbilities = GetComponentInParent<EnemyAbilities>();
 
         sprite = GetComponentInChildren<SpriteRenderer>();
         c2D = GetComponent<Collider2D>();
+    }
+
+    public void GetSpawner(Spawner spawner)
+    {
+        spawnerRef = spawner;
     }
 
     private void TakeDamage(int damage)
@@ -32,9 +41,18 @@ public class EnemyStats : MonoBehaviour
 
         if(health < 0)
         {
-            enemyAnimations.DeathAnimation();
+            Debug.Log("Muerto");
+
             Destroy(c2D);
-            Instantiate(dropPrefab, this.transform.position, this.transform.rotation);
+            enemyAnimations.DeathAnimation();
+            if(spawnerRef)
+            {
+                Debug.Log("Muerto Spawner");
+                spawnerRef.EnemyDeath();
+            }
+
+            Instantiate(dropsPrefabs[Random.Range(0, dropsPrefabs.Length)], this.transform.position, this.transform.rotation);
+
         }
 
     }

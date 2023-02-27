@@ -43,8 +43,11 @@ public class MovementeManager : MonoBehaviour
         //animationmanager.MoveAnimation(movementOffset);
     }
 
-    public void StopMovement()
+    public void TurnMovement(bool state)
     {
-        rb2D.velocity = Vector2.zero;
+        if(state)
+            rb2D.bodyType = RigidbodyType2D.Dynamic;
+        else
+            rb2D.bodyType = RigidbodyType2D.Static;
     }
 }

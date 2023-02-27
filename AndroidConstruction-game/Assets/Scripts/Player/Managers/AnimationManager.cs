@@ -30,4 +30,9 @@ public class AnimationManager : MonoBehaviour
     {
         playerAnimator.SetBool("Death", true);
     }
+
+    public void ResetDeath()
+    {
+        playerAnimator.SetBool("Death", false);
+    }
 }

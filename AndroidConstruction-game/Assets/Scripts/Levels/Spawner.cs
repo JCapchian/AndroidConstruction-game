@@ -5,56 +5,62 @@ using UnityEngine.Events;
 
 public class Spawner : MonoBehaviour
 {
+    SpawnerManagers spawnerManagers;
+    [Header ("Componentes")]
     private Collider2D triggerZone;
-    public bool active = false;
 
+    [Header ("Enemigos")]
     [SerializeField]
-    List<GameObject> enemiesList = new List<GameObject>();
+    EnemyStats enemyStatsRef;
     [SerializeField]
-    GameObject meleeEnemy;
+    GameObject meleeEnemyObject;
     [SerializeField]
-    GameObject turretEnemy;
+    GameObject turretEnemyObject;
 
+    [Header ("Propiedades")]
     [SerializeField]
-    Transform lootDrop;
+    bool canSpawn;
     [SerializeField]
-    GameObject finalDrop;
+    public bool isEnemyDeath;
     [SerializeField]
-    int wavesAmount;
-    public float timeBetweenWaves;
-    public float timeBetweenSpawn;
+    public bool isActive;
+    public bool lastWave;
 
-    public Transform[] spawnsPoints;
-    public GameObject[] doorsPoints;
+    public Transform spawnPoint;
 
     private void Awake()
     {
         triggerZone = GetComponent<Collider2D>();
+        spawnerManagers = GetComponentInParent<SpawnerManagers>();
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if(active == false && other.GetComponent<PlayerManager>())
-        {
-            active = true;
-            Debug.Log("Entro");
-            ActivateSpawner();
-            CloseOpenDoors(true);
-            Destroy(triggerZone);
-        }
-    }
+    // private void OnTriggerEnter2D(Collider2D other)
+    // {
+    //     if(isActive == false && other.GetComponent<PlayerManager>())
+    //     {
+    //         isActive = true;
+    //         Debug.Log("Entro");
+    //         ActivateSpawner();
+    //         //CloseOpenDoors(true);
+    //         Destroy(triggerZone);
+    //     }
+    // }
 
     private void ActivateSpawner()
     {
         // Spawn waves
-        if(wavesAmount > 0)
-        {
-            StartCoroutine(StartWave());
-            timeBetweenWaves = timeBetweenSpawn;
-            // Spawn Doors
-            CloseOpenDoors(true);
-        }
+        // if(!lastWave && canSpawn)
+        // {
+        //     StartCoroutine(StartWave());
+        //     timeBetweenWaves = timeBetweenSpawn;
+        //     // Spawn Doors
+        //     CloseOpenDoors(true);
+        // }
+        // else
+        // {
 
+        // }
+        /*
         if(timeBetweenWaves > 0)
         {
             timeBetweenWaves -= Time.deltaTime;
@@ -65,46 +71,36 @@ public class Spawner : MonoBehaviour
             StartWave();
             timeBetweenWaves = timeBetweenSpawn;
         }
+        */
     }
 
-
-
-    private void SpawnLoot()
+    public void EnemyDeath()
     {
-        Instantiate(finalDrop, lootDrop.transform.position, lootDrop.transform.rotation);
+        isEnemyDeath = true;
+        isActive = false;
+
+        spawnerManagers.CheckSpawners();
     }
 
-    private IEnumerator StartWave()
+    public IEnumerator StartWave(float time)
     {
-        yield return new WaitForSeconds(0.4f);
-        
-        for (var i = 0; i < spawnsPoints.Length; i++)
-        {
-            if(wavesAmount > 1)
-            {
-                var newEnemies = Instantiate(turretEnemy, spawnsPoints[i].transform.position, spawnsPoints[i].transform.rotation);
-                enemiesList.Add(newEnemies);
-                Debug.Log("Ultimo Enemigo");
-                spawnsPoints[i] = null;
-                CloseOpenDoors(false);
-                SpawnLoot();
-                this.gameObject.GetComponent<Spawner>().enabled = false;
-            }
-            else
-            {
-                var newEnemies = Instantiate(meleeEnemy, spawnsPoints[i].transform.position, spawnsPoints[i].transform.rotation);
-                enemiesList.Add(newEnemies);
-                Debug.Log("Enemigo numero: " + wavesAmount);
-            }
-        }
-        wavesAmount -= 1;
+        // Activo el tiempo de espera
+        yield return new WaitForSeconds(time);
+
+        //Guardo una referencia del enemigo;
+        var newEnemies = meleeEnemyObject;
+
+        if(spawnerManagers.lastWave)
+            // Spawneo una torreta
+            newEnemies = Instantiate(turretEnemyObject, transform.position, transform.rotation);
+        else
+            // Spawneo un melee
+            newEnemies = Instantiate(meleeEnemyObject, transform.position, transform.rotation);
+
+        // Guardo la referencia del enemigo
+        enemyStatsRef = newEnemies.GetComponent<EnemyStats>();
+        // Le guardo una referencia del spawner
+        enemyStatsRef.GetSpawner(this);
     }
 
-    private void CloseOpenDoors(bool state)
-    {
-        for (var i = 0; i < doorsPoints.Length; i++)
-        {
-            doorsPoints[i].SetActive(state);
-        }
-    }
 }

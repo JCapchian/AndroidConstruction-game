@@ -7,7 +7,7 @@ public class EnemyAbilities : MonoBehaviour
     [SerializeField]
     protected EnemyAnimations enemyAnimations;
     [SerializeField]
-    protected StatsManager player;
+    public StatsManager player;
 
     [SerializeField]
     protected bool playerInRange;

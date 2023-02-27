@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyAnimations : MonoBehaviour
 {
     [SerializeField]
-    EnemyStats enemyStats;
+    protected EnemyStats enemyStats;
     EnemyAbilities enemyAbilities;
 
     protected Animator enemyAnimator;
@@ -32,9 +32,8 @@ public class EnemyAnimations : MonoBehaviour
         enemyAnimator.SetTrigger("isAttacking");
     }
 
-    public void DeathAnimation()
+    public virtual void DeathAnimation()
     {
         enemyAnimator.SetBool("isDeath" ,true);
-        Destroy(enemyStats.gameObject, 0.5f);
     }
 }

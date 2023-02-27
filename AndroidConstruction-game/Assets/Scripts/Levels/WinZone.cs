@@ -5,26 +5,50 @@ using UnityEngine;
 
 public class WinZone : Interactable
 {
+    [SerializeField]
     LevelLoader levelLoader;
-    Scene sceneActual;
+    //[SerializeField]
+    //Scene sceneActual;
 
-    public string hasKeyText;
-    public string hasNoKeyText;
+    [SerializeField]
+    bool needKey;
+    [SerializeField]
+    string canExitText;
+    [SerializeField]
+    string cantExitText;
 
     protected override void Awake()
     {
         base.Awake();
 
         levelLoader = FindObjectOfType<LevelLoader>();
-        sceneActual = SceneManager.GetActiveScene();
+        //sceneActual = SceneManager.GetActiveScene();
     }
 
     public override void Interact(GameObject playerReference)
     {
-        if(inventoryManager.hasAllKeys)
-            levelLoader.LoadNextLevel();
+        Debug.Log("Pasar de nivel");
+
+        ResetPlayer();
+
+        gUIManager.InteractuablesTextPopUp(" ",false);
+
+        if(SceneManager.GetActiveScene().buildIndex == 4)
+            gUIManager.ShowWinScreen();
 
         base.Interact(playerReference);
+    }
+
+    void ResetPlayer()
+    {
+        playerManager.TurnDontDestroyOnLoad(true);
+
+        inventoryManager.SaveInventory();
+        inventoryManager.ResetKeys();
+
+        gUIManager.ResetKeys();
+
+        levelLoader.LoadNextLevel();
     }
 
     protected override void OnTriggerEnter2D(Collider2D other) {
@@ -32,10 +56,15 @@ public class WinZone : Interactable
 
         if(other.GetComponent<InventoryManager>())
         {
-            if(inventoryManager.hasAllKeys)
-            gUIManager.InteractuablesTextPopUp(hasKeyText,true);
-        else
-            gUIManager.InteractuablesTextPopUp(hasNoKeyText,true);
+            if(needKey)
+            {
+                if(inventoryManager.hasAllKeys)
+                    gUIManager.InteractuablesTextPopUp(canExitText,true);
+                else
+                    gUIManager.InteractuablesTextPopUp(cantExitText,true);
+            }
+            else
+                gUIManager.InteractuablesTextPopUp(canExitText,true);
         }
     }
 

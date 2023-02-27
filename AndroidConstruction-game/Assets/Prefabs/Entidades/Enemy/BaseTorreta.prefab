@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7870799933140820865}
   - component: {fileID: 2293364118610638242}
   - component: {fileID: 4374290325408950816}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: DetectionZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81,7 +81,7 @@ MonoBehaviour:
   playerInRange: 0
   canAttack: 1
   damage: 10
-  coolDown: 2
+  coolDown: 1
   turretAimDirection: {fileID: 0}
   turretStats: {fileID: 0}
   cannon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 756141134}
   - component: {fileID: 8824166307894025163}
   - component: {fileID: 1104434621258318666}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -216,7 +216,7 @@ GameObject:
   - component: {fileID: 2360837505791829959}
   - component: {fileID: 1435720243571134422}
   - component: {fileID: 4980578402788569214}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: BaseTorreta
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -283,11 +283,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyAnimations: {fileID: 0}
+  spawnerRef: {fileID: 0}
   sprite: {fileID: 0}
   c2D: {fileID: 0}
-  dropPrefab: {fileID: 1072680877236962235, guid: 8d993df7c94189e4a8907424595c2e14, type: 3}
+  dropsPrefabs:
+  - {fileID: 7208091681751390123, guid: 4544813b29d2771419653a9993d08290, type: 3}
+  - {fileID: 1982236066126366712, guid: d57b58c4a61140f4b885a47f2f2d1a62, type: 3}
+  - {fileID: 1072680877236962235, guid: 8d993df7c94189e4a8907424595c2e14, type: 3}
   health: 50
-  bulletSpeed: 6
+  bulletSpeed: 15
 --- !u!1 &5042934836794997782
 GameObject:
   m_ObjectHideFlags: 0
@@ -297,7 +301,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5042934836794997783}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Cannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}

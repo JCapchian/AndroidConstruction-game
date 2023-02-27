@@ -98,6 +98,7 @@ public class InventoryManager : MonoBehaviour
 
             // La asigno como padre
             gunsEquiped[gunsAmount].transform.parent = gunContainer.transform;
+            gunsEquiped[gunsAmount].c2D.enabled = false;
 
             // La guardo como arma activa
             activeGun = gunsEquiped[gunsAmount];
@@ -182,19 +183,19 @@ public class InventoryManager : MonoBehaviour
             case "greyAmmo":
                 greyAmmo += ammoQuantity;
                 // Actualizo interfaz
-                gUIManager.InvAmmoUpdateGUI(ammoQuantity);
+                gUIManager.InvAmmoUpdateGUI(greyAmmo);
                 Debug.Log("Obtuvo: " + ammoQuantity + " de municion gris");
                 break;
             case "greenAmmo":
                 greenAmmo += ammoQuantity;
                 // Actualizo interfaz
-                gUIManager.InvAmmoUpdateGUI(ammoQuantity);
+                gUIManager.InvAmmoUpdateGUI(greenAmmo);
                 Debug.Log("Obtuvo: " + ammoQuantity + " de municion verde");
                 break;
             case "purpleAmmo":
                 purpleAmmo += ammoQuantity;
                 // Actualizo interfaz
-                gUIManager.InvAmmoUpdateGUI(ammoQuantity);
+                gUIManager.InvAmmoUpdateGUI(purpleAmmo);
                 Debug.Log("Obtuvo: " + ammoQuantity + " de municion purpura");
                 break;
         }
@@ -229,6 +230,15 @@ public class InventoryManager : MonoBehaviour
             audioSource.PlayOneShot(completeObjetiveClip);
         }
     }
+
+    public void ResetKeys()
+    {
+        greenKey = false;
+        blueKey = false;
+        redKey = false;
+
+        hasAllKeys = false;
+    }
     #endregion
 
     #region Interaction region
@@ -262,14 +272,14 @@ public class InventoryManager : MonoBehaviour
         scrapAmount = 0;
     }
 
-    void SaveInventory()
+    public void SaveInventory()
     {
         lastGreenAmmo = greenAmmo;
         lastGreyAmmo = greyAmmo;
         lastPurpleAmmo = purpleAmmo;
     }
 
-    void LoadInventory()
+    public void LoadInventory()
     {
         greenAmmo = lastGreenAmmo;
         greyAmmo = lastGreyAmmo;

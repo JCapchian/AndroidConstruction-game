@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class PickUp : MonoBehaviour
 {
     // Managers References
+    [SerializeField]
     protected InventoryManager inventoryManager;
+    [SerializeField]
+    protected StatsManager statsManager;
     //Component
     [SerializeField]
     protected AudioSource audioSource;
@@ -14,7 +18,7 @@ public class PickUp : MonoBehaviour
 
     protected virtual void Awake()
     {
-
+        audioSource = GetComponent<AudioSource>();
     }
 
     protected virtual void PickUpFunction()
@@ -31,6 +35,7 @@ public class PickUp : MonoBehaviour
         if(other.GetComponent<InventoryManager>())
         {
             inventoryManager = other.GetComponent<InventoryManager>();
+            statsManager = other.GetComponent<StatsManager>();
             PickUpFunction();
         }
     }
@@ -41,6 +46,7 @@ public class PickUp : MonoBehaviour
         if(other.GetComponent<InventoryManager>())
         {
             inventoryManager = null;
+            statsManager = null;
         }
     }
 }

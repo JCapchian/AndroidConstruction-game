@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
+    GameObject playerPackage;
     public Transform target;
     public Vector3 offset;
     public float damping;
@@ -12,9 +14,13 @@ public class CameraManager : MonoBehaviour
 
     private void Awake()
     {
+        playerPackage = transform.parent.gameObject;
         target = FindObjectOfType<PlayerManager>().gameObject.transform;
 
-        DontDestroyOnLoad(this.gameObject);
+        this.transform.parent = null;
+
+        if(SceneManager.GetActiveScene().buildIndex != 2)
+            DontDestroyOnLoad(this.gameObject);
     }
 
     public void HandleCamera()

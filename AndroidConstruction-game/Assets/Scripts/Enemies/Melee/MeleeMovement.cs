@@ -13,9 +13,12 @@ public class MeleeMovement : MonoBehaviour
     [SerializeField]
     float speed;
     [SerializeField]
+    float distanceToPlayer;
+    [SerializeField]
     public bool isIdle;
     [SerializeField]
     public bool isMoving;
+    
 
     //Transform playerPosition;
 
@@ -36,7 +39,7 @@ public class MeleeMovement : MonoBehaviour
         if(detectionZone.seePlayer)
         {
             var targetPosition = detectionZone.playerStats.transform.position;
-            if(Vector2.Distance(transform.position , targetPosition) > 3)
+            if(Vector2.Distance(transform.position , targetPosition) > distanceToPlayer)
             {
                 isIdle = false;
                 isMoving = true;
@@ -50,5 +53,10 @@ public class MeleeMovement : MonoBehaviour
             isIdle = true;
             isMoving = false;
         }
+    }
+
+    public void StopMovement()
+    {
+        rb2D.constraints = RigidbodyConstraints2D.FreezeAll;
     }
 }

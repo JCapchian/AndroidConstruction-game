@@ -1,14 +1,20 @@
 using System.Collections;
+using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class StatsManager : MonoBehaviour
 {
+    [SerializeField]
+    public bool MurioPrimerNivel;
+    Scene actualScene;
+
     // Managers
     [SerializeField]
     PlayerManager playerManager;
     GUIManager gUIManager;
     MovementeManager movementeManager;
+    InventoryManager inventoryManager;
 
     SpriteRenderer sprite;
     AnimationManager animationManager;
@@ -28,6 +34,8 @@ public class StatsManager : MonoBehaviour
     public int health;
 
     private void Awake() {
+        actualScene = SceneManager.GetActiveScene();
+
         // Declaro los managers
         playerManager = GetComponent<PlayerManager>();
         animationManager = GetComponent<AnimationManager>();
@@ -42,11 +50,13 @@ public class StatsManager : MonoBehaviour
         // Declaro las estadicas
         health = maxHealth;
 
-        //gUIManager.SetMaxHealth(health);
+        MurioPrimerNivel = false;
     }
 
     public void TakeDamage(int damage)
     {
+        Debug.Log("Daño");
+
         // Resto el daño a la vida
         health -= damage;
 
@@ -58,9 +68,25 @@ public class StatsManager : MonoBehaviour
 
         if(health <= 0)
         {
+            health = 0;
+            gUIManager.SetHealth(health);
+
+            if(actualScene.buildIndex == 2)
+                MurioPrimerNivel = true;
+
             StartCoroutine(DeathOfThePlayer());
-            hitCollider.enabled = false;
+
         }
+    }
+
+    public void HealPlayer(int healthOnGround)
+    {
+        health += healthOnGround;
+
+        if(health > maxHealth)
+            health = maxHealth;
+            
+        gUIManager.SetHealth(health);
     }
 
     private IEnumerator DamageVisualEffect()
@@ -99,8 +125,9 @@ public class StatsManager : MonoBehaviour
     {
         // Apago los managers del jugador
         playerManager.TurnStateManagersPlayer(false);
+        hitCollider.enabled = false;
 
-        movementeManager.StopMovement();
+        movementeManager.TurnMovement(false);
 
         // Ejecuto la animacion de muerte
         animationManager.DeathAnimation();
@@ -109,5 +136,16 @@ public class StatsManager : MonoBehaviour
 
         gUIManager.SHowDeathScreen();
 
+    }
+    
+    public void ResetStats()
+    {
+        health = maxHealth;
+        hitCollider.enabled = true;
+        
+        gUIManager.SetHealth(health);
+
+        playerManager.TurnStateManagersPlayer(true);
+        
     }
 }

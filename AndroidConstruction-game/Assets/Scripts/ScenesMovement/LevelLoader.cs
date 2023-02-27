@@ -5,12 +5,25 @@ using UnityEngine.SceneManagement;
 
 public class LevelLoader : MonoBehaviour
 {
-    public Animator transition;
+    [SerializeField]
+    private MusicPlayer musicPlayer;
 
-    public float transitionTime = 1f;
+    [SerializeField]
+    private Animator transition;
+    [SerializeField]
+    private float transitionTime = 1f;
+
+    private void Awake() {
+        if(FindObjectOfType<MusicPlayer>())
+        {
+            musicPlayer = FindObjectOfType<MusicPlayer>();
+            musicPlayer.CheckScecne();
+        }
+    }
 
     public void LoadNextLevel()
     {
+        Debug.Log("Cargar proximo nivel");
         //Load the next scene in the index
         StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
     }

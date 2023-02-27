@@ -54,7 +54,7 @@ public class Rifle : Guns
 
         // Genero el proyectil del arma
         GameObject bullet = Instantiate(proyectilePrefab, cannon.position , cannon.rotation);
-        bullet.GetComponent<Bullet>().SetStatsEffects(damage ,bulletTrailColor ,bulletColor);
+        bullet.GetComponent<Bullet>().SetStatsEffects(damage ,bulletLifeTime ,bulletTrailColor ,bulletColor);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.AddForce(cannon.right * velocityProyectile, ForceMode2D.Impulse);
 
