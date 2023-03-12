@@ -594,6 +594,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6111928064037680016, guid: 08882dbc748c998479e8ade2f57fc273, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 17
+      objectReference: {fileID: 0}
     - target: {fileID: 6735409315987516312, guid: 08882dbc748c998479e8ade2f57fc273, type: 3}
       propertyPath: m_RootOrder
       value: 1

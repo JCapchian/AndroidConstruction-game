@@ -15,6 +15,8 @@ public class GUIManager : MonoBehaviour
     StatsManager statsManager;
     InventoryManager inventoryManager;
     PlayerManager playerManager;
+    [SerializeField]
+    MusicPlayer musicPlayer;
 
     [Header ("Stats Jugador")]
     [SerializeField]
@@ -91,6 +93,7 @@ public class GUIManager : MonoBehaviour
         playerManager = playerRef.GetComponent<PlayerManager>();
         statsManager = playerRef.GetComponent<StatsManager>();
         inventoryManager = playerRef.GetComponent<InventoryManager>();
+        musicPlayer = FindObjectOfType<MusicPlayer>();
 
         // Pantallas
         pauseScreen = transform.GetChild(4).gameObject;
@@ -134,7 +137,7 @@ public class GUIManager : MonoBehaviour
         // Text
         textAviso = transform.GetChild(7).GetComponent<TMP_Text>();
 
-        this.transform.parent = null;
+        this.transform.SetParent(null);
 
         if(SceneManager.GetActiveScene().buildIndex != 2)
             DontDestroyOnLoad(this.gameObject);
@@ -264,6 +267,8 @@ public class GUIManager : MonoBehaviour
         TurnScreens(false);
         
         playerManager.DestroyPlayer();
+        Destroy(musicPlayer.gameObject);
+        Cursor.visible = true;
 
         SceneManager.LoadScene(0);
     }

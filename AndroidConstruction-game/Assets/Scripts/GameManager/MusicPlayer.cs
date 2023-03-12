@@ -7,6 +7,8 @@ using UnityEngine;
 public class MusicPlayer : MonoBehaviour
 {
     [SerializeField]
+    GUIManager gUIManager;
+    [SerializeField]
     AudioSource audioSource;
     [SerializeField]
     AudioClip menuMusic;
@@ -19,6 +21,9 @@ public class MusicPlayer : MonoBehaviour
 
     private void Awake()
     {
+        if(FindObjectOfType<GUIManager>())
+            gUIManager = FindObjectOfType<GUIManager>();
+
         audioSource = GetComponent<AudioSource>();
 
         audioSource.Stop();
@@ -48,6 +53,7 @@ public class MusicPlayer : MonoBehaviour
 
     private void LoadClip()
     {
+        Debug.Log(menuMusic);
         if(isInMenu)
         {
             audioSource.clip = menuMusic;

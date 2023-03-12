@@ -20,7 +20,6 @@ public class Bullet : MonoBehaviour
     {
         trail = GetComponent<TrailRenderer>();
         sprite = GetComponent<SpriteRenderer>();
-        Debug.Log(layerMask.value);
     }
 
     private void OnCollisionEnter2D (Collision2D other)
